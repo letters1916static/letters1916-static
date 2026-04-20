@@ -157,7 +157,7 @@
     
     <xsl:template match="tei:place" name="place_detail">
         <dl>
-            <dt>Ortsname</dt>
+            <dt>Place</dt>
             <dd>
                 <xsl:choose>
                     <xsl:when test="./tei:settlement/tei:placeName">

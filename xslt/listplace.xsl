@@ -62,7 +62,7 @@
                         <table id="placesTable">
                             <thead>
                                 <tr>
-                                    <th scope="col">Ortsname</th>
+                                    <th scope="col">Place</th>
                                     <th scope="col">Erwähnungen</th>
                                     <th scope="col">lat</th>
                                     <th scope="col">lng</th>
@@ -70,9 +70,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <xsl:for-each select=".//tei:place[@xml:id]">
+                                <xsl:for-each select=".//tei:place[@xml:base]">
                                     <xsl:variable name="id">
-                                        <xsl:value-of select="data(@xml:id)"/>
+                                        <xsl:value-of select="data(@xml:base)"/>
                                     </xsl:variable>
                                     <tr>
                                         <td>

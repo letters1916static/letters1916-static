@@ -20,7 +20,7 @@ const map_cfg = {
   subdomains: "abcd",
   attribution:
     '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors & <a href="https://carto.com/attributions">CARTO</a>',
-  base_map_label: "Aktuelle Karte"
+  base_map_label: "Aktuelle Karte",
 };
 
 /*provide a list of your table columns and what tabulator should do with it
@@ -30,8 +30,8 @@ const columns = [
     provide a string val in your html-table */
   {
     headerFilter: "input",
-    title: "Ortsname",
-    field: "Ortsname",
+    title: "Place",
+    field: "Place",
     formatter: linkToDetailView,
     resizable: true,
   },
@@ -104,9 +104,7 @@ const tabulator_cfg = {
   responsiveLayout: "collapse",
   langs: langs,
   columns: columns,
-  initialSort:[
-    {column:"Ortsname", dir:"asc"},
-  ]
+  initialSort: [{ column: "Place", dir: "asc" }],
 };
 
 /*this is just an extra capsule to pass cfg trough the functions*/
@@ -141,8 +139,14 @@ let wms_cfg = {
 let tms_cfg = {
   label: "Europa um 1700",
   tms_url: "https://emt-project.github.io/mapserver/map_01/{z}/{x}/{y}.png",
-  layerOptions: {tms: 1, opacity: 0.8, minZoom: 2, maxZoom: 12, attribution: "Austrian National Library (ÖNB)"},
-}
+  layerOptions: {
+    tms: 1,
+    opacity: 0.8,
+    minZoom: 2,
+    maxZoom: 12,
+    attribution: "Austrian National Library (ÖNB)",
+  },
+};
 
 //////////////////////////////////////////////////
 /* some functions to influence the visualization*/
@@ -151,24 +155,23 @@ let tms_cfg = {
 /*define the way you want to created an popup lable on the map
 you have full acces to row data via row.getData() and can write html as in example below*/
 function popupLabelCreator(row) {
-  return `<a href="${row.linkToEntity}.html">${row.Ortsname}</a>`;
+  return `<a href="${row.linkToEntity}.html">${row.Place}</a>`;
 }
 
 function tooltipLabelcreator(row) {
-  return `${row.Ortsname}`;
+  return `${row.Place}`;
 }
 
-const get_popup_label_string_html = popupLabelCreator
-const get_tooltip_label = tooltipLabelcreator
-
+const get_popup_label_string_html = popupLabelCreator;
+const get_tooltip_label = tooltipLabelcreator;
 
 /*some helpers*/
 
-function linkToDetailView (cell) {
-  var row = cell.getRow().getData()
-  var cellData = cell.getData()
-  var linkValue = row.linkToEntity
-  var linkText = cellData.Ortsname
-  var theLink = `<a href="${linkValue}.html">${linkText}</a>`
-  return theLink
+function linkToDetailView(cell) {
+  var row = cell.getRow().getData();
+  var cellData = cell.getData();
+  var linkValue = row.linkToEntity;
+  var linkText = cellData.Place;
+  var theLink = `<a href="${linkValue}.html">${linkText}</a>`;
+  return theLink;
 }

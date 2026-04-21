@@ -66,9 +66,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <xsl:for-each select=".//tei:person[@xml:base]">
+                                <xsl:for-each select=".//tei:person[@xml:id]">
                                     <xsl:variable name="id">
-                                        <xsl:value-of select="data(@xml:base)"/>
+                                        <xsl:value-of select="data(@xml:id)"/>
                                     </xsl:variable>
                                     <tr>
                                         <td>

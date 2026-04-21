@@ -29,6 +29,14 @@
     <xsl:variable name="doc_title">
         <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
     </xsl:variable>
+    <!-- Variables to display letter image -->
+    <xsl:variable name="IIIFBase">https://letters1916.ie/diyhistory/archive/fullsize/</xsl:variable>
+    <xsl:variable name="InfoJson">
+        <xsl:value-of select="concat($IIIFBase, data(.//tei:graphic[1]/@url), '?format=IIIF')"/>
+    </xsl:variable>
+    <xsl:variable name="IIIFViewer">
+        <xsl:value-of select="$InfoJson"/>
+    </xsl:variable>
 
 
     <xsl:template match="/">
@@ -104,37 +112,51 @@
                                 </xsl:if>
                             </div>
                         </div>
-                        <xsl:apply-templates select=".//tei:body"></xsl:apply-templates>
-                        <p style="text-align:center;">
-                            <xsl:for-each select=".//tei:note[not(./tei:p)]">
-                                <div class="footnotes">
-                                    <xsl:element name="a">
-                                        <xsl:attribute name="name">
-                                            <xsl:text>fn</xsl:text>
-                                            <xsl:number level="any" format="1" count="tei:note"/>
+                        <div class="row pt-3">
+                            <div class="col-md-5 pt-5">
+                                <xsl:apply-templates select="//tei:body"/>
+                            </div>
+                            <div class="col-md-7 text-center">
+                                <div id="osd_viewer"/>
+                                    <a target="_blank">
+                                        <xsl:attribute name="href">
+                                            <xsl:value-of select="$IIIFViewer"/>
                                         </xsl:attribute>
-                                        <a>
-                                            <xsl:attribute name="href">
-                                                <xsl:text>#fna_</xsl:text>
+                                        Open image in new tab
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="text-align:center;">
+                                <xsl:for-each select=".//tei:note[not(./tei:p)]">
+                                    <div class="footnotes">
+                                        <xsl:element name="a">
+                                            <xsl:attribute name="name">
+                                                <xsl:text>fn</xsl:text>
                                                 <xsl:number level="any" format="1" count="tei:note"/>
                                             </xsl:attribute>
-                                            <span style="font-size:7pt;vertical-align:super; margin-right: 0.4em">
-                                                <xsl:number level="any" format="1" count="tei:note"/>
-                                            </span>
-                                        </a>
-                                    </xsl:element>
-                                    <xsl:apply-templates/>
-                                </div>
-                            </xsl:for-each>
-                        </p>
+                                            <a>
+                                                <xsl:attribute name="href">
+                                                    <xsl:text>#fna_</xsl:text>
+                                                    <xsl:number level="any" format="1" count="tei:note"/>
+                                                </xsl:attribute>
+                                                <span style="font-size:7pt;vertical-align:super; margin-right: 0.4em">
+                                                    <xsl:number level="any" format="1" count="tei:note"/>
+                                                </span>
+                                            </a>
+                                        </xsl:element>
+                                        <xsl:apply-templates/>
+                                    </div>
+                                </xsl:for-each>
+                            </p>
 
-                        <div class="text-center p-4">
-                            <xsl:call-template name="blockquote">
-                                <xsl:with-param name="pageId" select="$link"/>
-                            </xsl:call-template>
+                            <div class="text-center p-4">
+                                <xsl:call-template name="blockquote">
+                                    <xsl:with-param name="pageId" select="$link"/>
+                                </xsl:call-template>
+                            </div>
                         </div>
-
-                    </div>
                     <xsl:for-each select="//tei:back">
                         <div class="tei-back">
                             <xsl:apply-templates/>
@@ -143,6 +165,17 @@
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <script src="vendor/openseadragon-bin-4.1.1/openseadragon.min.js"/>
+                <script type="text/javascript">
+                    var source = "<xsl:value-of select="$InfoJson"/>";
+                    var viewer = OpenSeadragon({
+                        id: "osd_viewer",
+                        tileSources: {
+                            type: 'image',
+                            url: source
+                        },
+                        prefixUrl:"https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/",
+                    });
+                </script>
             </body>
         </html>
     </xsl:template>

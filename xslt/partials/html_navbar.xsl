@@ -13,7 +13,7 @@
                         -->
                         <img>
                             <xsl:attribute name="class">img-fluid d-none d-lg-block</xsl:attribute>
-                            <xsl:attribute name="src">https://letters1916.ie/static/media/logo-update.8166fb93.png</xsl:attribute>
+                            <xsl:attribute name="src">images/logo-letters1916.png</xsl:attribute>
                             <xsl:attribute name="alt">Letters 1916 logo</xsl:attribute>
                             <xsl:attribute name="width">450px</xsl:attribute>
                         </img>
@@ -29,11 +29,9 @@
                                     <li>
                                         <a class="dropdown-item" href="about.html">About</a>
                                     </li>
-                                    <!--
                                     <li>
                                         <a class="dropdown-item" href="imprint.html">Impressum</a>
                                     </li>
-                                    -->
                                 </ul>
                             </li>
 
@@ -47,10 +45,10 @@
                                     <li>
                                         <a class="dropdown-item" href="listperson.html">Persons</a>
                                     </li>
+                                    <!--
                                     <li>
                                         <a class="dropdown-item" href="listplace.html">Places</a>
                                     </li>
-                                    <!--
                                     <li>
                                         <a class="dropdown-item" href="listorg.html">Organisationen</a>
                                     </li>
@@ -60,15 +58,19 @@
                                     -->
                                 </ul>
                             </li>
+                            <!--
                             <li class="nav-item">
                                 <a title="API" class="nav-link" href="api.xml">API</a>
                             </li>
+                            -->
                             <li class="nav-item">
                                 <a title="Suche" class="nav-link" href="search.html">Search</a>
                             </li>
+                            <!--
                             <li class="nav-item">
                                 <a title="Suche" class="nav-link" href="noske-search.html">Noske-Suche</a>
                             </li>
+                            -->
                         </ul>
                     </div>
                 </div>

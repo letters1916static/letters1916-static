@@ -17,7 +17,7 @@
 
 
     <xsl:template match="/">
-        <xsl:variable name="doc_title" select="'Inhaltsverzeichnis'"/>
+        <xsl:variable name="doc_title" select="'Explore the collection'"/>
         <xsl:variable name="link" select="'toc.html'"/>
         <html class="h-100" lang="{$default_lang}">
             <head>
@@ -47,12 +47,15 @@
                     </nav>
                     <div class="container">
                         <h1><xsl:value-of select="$doc_title"/></h1>
+                        <div class="text-center p-1"><span id="counter1"></span> out of <span id="counter2"></span> Letters</div>
                         <table id="myTable">
                             <thead>
                                 <tr>
                                     <th scope="col" width="20" tabulator-formatter="html" tabulator-headerSort="false" tabulator-download="false">#</th>
-                                    <th scope="col" tabulator-headerFilter="input">Title</th>
-                                    <th scope="col" tabulator-headerFilter="input">Filename</th>
+                                    <th scope="col" tabulator-headerFilter="input">From</th>
+                                    <th scope="col" tabulator-headerFilter="input">To</th>
+                                    <th scope="col" tabulator-headerFilter="input">Date</th>
+                                    <th scope="col" tabulator-headerSort="false" tabulator-download="false" tabulator-visible="false">link_to_letter</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,6 +75,7 @@
                                                 <i class="bi bi-link-45deg"/>
                                             </a>
                                         </td>
+                                        <!--
                                         <td>
                                             <xsl:value-of
                                                 select=".//tei:titleStmt/tei:title[1]/text()"/>
@@ -79,6 +83,22 @@
                                         <td>
                                             <xsl:value-of select="tokenize($full_path, '/')[last()]"
                                             />
+                                        </td>
+                                        -->
+                                        <td>
+                                            <xsl:value-of
+                                                select='.//tei:correspAction[@type="sent"]/tei:persName/text()'/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of
+                                                select='.//tei:correspAction[@type="received"]/tei:persName/text()'/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of
+                                                select='.//tei:correspAction[@type="sent"]/tei:date/text()'/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="replace((tokenize($full_path, '/')[last()]), '.xml', '.html')"/>
                                         </td>
                                     </tr>
                                 </xsl:for-each>

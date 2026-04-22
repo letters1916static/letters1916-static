@@ -53,7 +53,7 @@
                         <h1>
                             <xsl:value-of select="$doc_title"/>
                         </h1>
-
+                        <div class="text-center p-1"><span id="counter1"></span> out of <span id="counter2"></span> persons</div>
                         <table id="myTable">
                             <thead>
                                 <tr>
@@ -74,7 +74,7 @@
                                         <td>
                                             <a>
                                               <xsl:attribute name="href">
-                                              <xsl:value-of select="concat($id, '.html')"/>
+                                                <xsl:value-of select="concat($id, '.html')"/>
                                               </xsl:attribute>
                                               <i class="bi bi-link-45deg"/>
                                             </a>

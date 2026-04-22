@@ -29,6 +29,9 @@
     <xsl:variable name="doc_title">
         <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
     </xsl:variable>
+    <xsl:variable name="summary">
+        <xsl:value-of select='.//tei:note[@type="summary"]/tei:p/text()'/>
+    </xsl:variable>
     <!-- Variables to display letter image -->
     <xsl:variable name="IIIFBase">https://letters1916.ie/diyhistory/archive/fullsize/</xsl:variable>
     <xsl:variable name="InfoJson">
@@ -114,7 +117,16 @@
                         </div>
                         <div class="row pt-3">
                             <div class="col-md-5 pt-5">
-                                <xsl:apply-templates select="//tei:body"/>
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="nav-read-tab" data-bs-toggle="tab" data-bs-target="#nav-read" type="button" role="tab" aria-controls="nav-read" aria-selected="true">Transcription</button>
+                                        <button class="nav-link" id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about" type="button" role="tab" aria-controls="nav-about" aria-selected="false">About this letter</button>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-read" role="tabpanel" aria-labelledby="nav-read-tab"><xsl:apply-templates select="//tei:body"/></div>
+                                    <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab"><p><i><xsl:value-of select="$summary"/></i></p></div>
+                                </div>     
                             </div>
                             <div class="col-md-7 text-center">
                                 <div id="osd_viewer"/>
@@ -128,6 +140,8 @@
                             </div>
                         </div>
                         <div>
+                        
+                        <!--
                             <p style="text-align:center;">
                                 <xsl:for-each select=".//tei:note[not(./tei:p)]">
                                     <div class="footnotes">
@@ -150,6 +164,7 @@
                                     </div>
                                 </xsl:for-each>
                             </p>
+                            -->
 
                             <div class="text-center p-4">
                                 <xsl:call-template name="blockquote">
@@ -166,7 +181,7 @@
                 <xsl:call-template name="html_footer"/>
                 <script src="vendor/openseadragon-bin-4.1.1/openseadragon.min.js"/>
                 <script type="text/javascript">
-                    var source = "<xsl:value-of select="$InfoJson"/>";
+                    var source = "<xsl:value-of select="IIIFViewer"/>";
                     var viewer = OpenSeadragon({
                         id: "osd_viewer",
                         tileSources: {

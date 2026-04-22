@@ -24,6 +24,24 @@
             document.getElementById("download-html").addEventListener("click", function(){
             table.download("html", "data.html", {style:true});
             });
+
+            table.on("rowClick", function (e, row) {
+                var data = row.getData();
+                var url = `${data["link_to_letter"]}`;
+                window.open(url, "_self");
+            });
+
+            table.on("dataLoaded", function (data) {
+            var el = document.getElementById("counter1");
+            el.innerHTML = `${data.length}`;
+            var el = document.getElementById("counter2");
+            el.innerHTML = `${data.length}`;
+            });
+            
+            table.on("dataFiltered", function (filters, data) {
+            var el = document.getElementById("counter1");
+            el.innerHTML = `${data.length}`;
+            }); 
         </script>
     </xsl:template>
 </xsl:stylesheet>

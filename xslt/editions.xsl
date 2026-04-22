@@ -33,12 +33,9 @@
         <xsl:value-of select='.//tei:note[@type="summary"]/tei:p/text()'/>
     </xsl:variable>
     <!-- Variables to display letter image -->
-    <xsl:variable name="IIIFBase">https://letters1916.ie/diyhistory/archive/fullsize/</xsl:variable>
-    <xsl:variable name="InfoJson">
-        <xsl:value-of select="concat($IIIFBase, data(.//tei:graphic[1]/@url), '?format=IIIF')"/>
-    </xsl:variable>
-    <xsl:variable name="IIIFViewer">
-        <xsl:value-of select="$InfoJson"/>
+    <xsl:variable name="img_base">https://letters1916.ie/diyhistory/archive/fullsize/</xsl:variable>
+    <xsl:variable name="img_url">
+        <xsl:value-of select="concat($img_base, data(.//tei:graphic[1]/@url))"/>
     </xsl:variable>
 
 
@@ -170,7 +167,7 @@
                                 <div id="osd_viewer"/>
                                     <a target="_blank">
                                         <xsl:attribute name="href">
-                                            <xsl:value-of select="$IIIFViewer"/>
+                                            <xsl:value-of select="$img_url"/>
                                         </xsl:attribute>
                                         Open image in new tab
                                     </a>
@@ -219,13 +216,18 @@
                 <xsl:call-template name="html_footer"/>
                 <script src="vendor/openseadragon-bin-4.1.1/openseadragon.min.js"/>
                 <script type="text/javascript">
-                    var source = "<xsl:value-of select="IIIFViewer"/>";
                     var viewer = OpenSeadragon({
                         id: "osd_viewer",
-                        tileSources: {
-                            type: 'image',
-                            url: source
-                        },
+                        sequenceMode: true,
+                        showReferenceStrip: true,
+                        tileSources: [
+                            <xsl:for-each select=".//tei:graphic/@url">
+                                {
+                                type: 'image',
+                                url: '<xsl:value-of select="concat($img_base, .)"/>'
+                                },
+                            </xsl:for-each>
+                        ],
                         prefixUrl:"https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/",
                     });
                 </script>

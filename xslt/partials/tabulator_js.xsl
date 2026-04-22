@@ -27,7 +27,7 @@
 
             table.on("rowClick", function (e, row) {
                 var data = row.getData();
-                var url = `${data["link_to_letter"]}`;
+                var url = `${data["link_to_doc"]}`;
                 window.open(url, "_self");
             });
 

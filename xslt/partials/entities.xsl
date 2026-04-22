@@ -143,13 +143,17 @@
                 </xsl:for-each>
             </xsl:if>
             <xsl:if test="./tei:noteGrp/tei:note[@type = 'mentions']">
-                <dt>Erwähnt in</dt>
+                <dt>Mentioned in</dt>
                 <dd>
-                    <xsl:for-each select="./tei:noteGrp/tei:note[@type = 'mentions']">
-                        <a href="{replace(@target, '.xml', '.html')}">
-                            <xsl:value-of select="./text()"/>
-                        </a>
-                    </xsl:for-each>
+                    <ul>
+                        <xsl:for-each select="./tei:noteGrp/tei:note[@type = 'mentions']">
+                            <li>
+                                <a href="{replace(@target, '.xml', '.html')}">
+                                    <xsl:value-of select="./text()"/>
+                                </a>
+                            </li>
+                        </xsl:for-each>
+                    </ul>
                 </dd>
             </xsl:if>
         </dl>

@@ -55,7 +55,7 @@
                                     <th scope="col" tabulator-headerFilter="input">From</th>
                                     <th scope="col" tabulator-headerFilter="input">To</th>
                                     <th scope="col" tabulator-headerFilter="input">Date</th>
-                                    <th scope="col" tabulator-headerSort="false" tabulator-download="false" tabulator-visible="false">link_to_letter</th>
+                                    <th scope="col" tabulator-headerSort="false" tabulator-download="false" tabulator-visible="false">link_to_doc</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -57,12 +57,15 @@
                         <table id="myTable">
                             <thead>
                                 <tr>
+                                    <!--
                                     <th scope="col" width="20" tabulator-formatter="html" tabulator-headerSort="false" tabulator-download="false">#</th>
-                                    <th scope="col" tabulator-headerFilter="input">Name</th>
+                                    -->
+                                    <th scope="col" tabulator-formatter="html" tabulator-headerFilter="input">Name</th>
                                     <!---
                                     <th scope="col" tabulator-headerFilter="input">Vorname</th>
                                     -->
-                                    <th scope="col" tabulator-headerFilter="input">ID</th>
+                                    <th scope="col" tabulator-headerFilter="input">Mentions</th>
+                                    <th scope="col" tabulator-headerSort="false" tabulator-download="false" tabulator-visible="false">link_to_doc</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,19 +79,28 @@
                                               <xsl:attribute name="href">
                                                 <xsl:value-of select="concat($id, '.html')"/>
                                               </xsl:attribute>
+                                              <!--
                                               <i class="bi bi-link-45deg"/>
+                                              -->
+                                              <xsl:value-of select=".//tei:persName/text()"/>
                                             </a>
                                         </td>
+                                        <!---
                                         <td>
                                             <xsl:value-of select=".//tei:persName/text()"/>
                                         </td>
-                                        <!--
                                         <td>
                                             <xsl:value-of select=".//tei:forename/text()"/>
                                         </td>
-                                        -->
                                         <td>
                                             <xsl:value-of select="$id"/>
+                                        </td>
+                                        -->
+                                        <td>
+                                            <xsl:value-of select="count(.//tei:noteGrp//tei:note)"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="concat($id, '.html')"/>
                                         </td>
                                     </tr>
                                 </xsl:for-each>

@@ -18,3 +18,10 @@ div#map {
   width: 90%;
   height: 600px;
 }
+
+.badge-outline {
+  color: black;
+  border: 1px solid #999;
+  background-color: transparent;
+  font-weight: normal;
+}

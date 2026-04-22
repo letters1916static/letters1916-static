@@ -125,7 +125,7 @@
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-read" role="tabpanel" aria-labelledby="nav-read-tab"><xsl:apply-templates select="//tei:body"/></div>
                                     <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab"><p><i><xsl:value-of select="$summary"/></i></p></div>
-                                    <div class="tab-pane fade" id="nav-meta" role="tabpanel" aria-labelledby="nav-meta-tab">
+                                    <div class="tab-pane fade pt-3" id="nav-meta" role="tabpanel" aria-labelledby="nav-meta-tab">
                                         <div class="card" style="width: 100%;">
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item">
@@ -155,7 +155,9 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
                                                     </svg>
                                                     &#160;
-                                                    <xsl:value-of select='//tei:keywords/tei:list/tei:item[@n="topic"]/text()'/>
+                                                    <xsl:for-each select='//tei:keywords/tei:list/tei:item[@n="topic"]'>
+                                                        <span class="badge badge-outline"><xsl:value-of select="./text()"/></span>&#160;
+                                                    </xsl:for-each>
                                                 </li>
                                             </ul>
                                         </div>

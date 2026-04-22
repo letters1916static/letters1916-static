@@ -166,6 +166,24 @@ search.addWidgets([
     searchablePlaceholder: "Search for places",
     cssClasses: DEFAULT_CSS_CLASSES,
   }),
+
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },
+    templates: {
+      header: "Keywords",
+    },
+  })(instantsearch.widgets.refinementList)({
+    container: "#rf-keywords",
+    attribute: "keyword_entities.label",
+    searchable: true,
+    showMore: true,
+    showMoreLimit: 50,
+    limit: 10,
+    searchablePlaceholder: "Search for keywords",
+    cssClasses: DEFAULT_CSS_CLASSES,
+  }),
   /*
   instantsearch.widgets.panel({
     collapsed: ({ state }) => {

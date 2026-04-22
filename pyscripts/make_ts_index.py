@@ -109,10 +109,16 @@ for x in tqdm(files, total=len(files)):
             y.xpath("./tei:title", namespaces=namespaces)[0]
         )
         record["bibl_entities"].append(item)
+        
+    record["keyword_entities"] = []
+    for y in doc.any_xpath('//tei:keywords/tei:list/tei:item[@n="topic"]/text()'):
+        item = {}
+        item["id"] = y.replace(" ", "_").lower()
+        item["label"] = y
+        record["keyword_entities"].append(item)
 
     records.append(record)
     print(record)
-
 
 make_index = client.collections[COLLECTION_NAME].documents.import_(records)
 print(make_index)

@@ -1,15 +1,23 @@
 const indexName = "letters1916-static";
 
-const apiKey = "0drlT8CHD6T9z8QxQjYXvSWT2dZ75nPv"; /* change this */
+// const apiKey = "0drlT8CHD6T9z8QxQjYXvSWT2dZ75nPv"; /* change this */
+const apiKey = "xyz";
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
     apiKey: apiKey,
-    nodes: [
+    /*     nodes: [
       {
         host: "typesense.acdh-dev.oeaw.ac.at",
         port: "443",
         protocol: "https",
+      },
+    ], */
+    nodes: [
+      {
+        host: "localhost",
+        port: "8108",
+        protocol: "http",
       },
     ],
     cacheSearchResultsForSeconds: 2 * 60,
@@ -70,22 +78,24 @@ search.addWidgets([
             (item) =>
               html`<a href="${item.id}.html" class="pe-2 custom-link"
                 ><i class="bi bi-geo-alt pe-1"></i>${item.label}</a
-              >`
+              >`,
           )}
           <br />
           ${hit.person_entities.map(
             (item) =>
               html`<a href="${item.id}.html" class="pe-2 custom-link"
                 ><i class="bi bi-person pe-1"></i>${item.label}</a
-              >`
+              >`,
           )}
+          <!--
           <br />
           ${hit.bibl_entities.map(
             (item) =>
               html`<a href="${item.id}.html" class="pe-2 custom-link"
                 ><i class="bi bi-book pe-1"></i>${item.label}</a
-              >`
+              >`,
           )}
+          -->
           <br />
         </div>`;
       },
@@ -95,9 +105,9 @@ search.addWidgets([
   instantsearch.widgets.sortBy({
     container: "#sort-by",
     items: [
-      { label: "Standard", value: `${indexName}` },
-      { label: "ID (aufsteigend)", value: `${indexName}/sort/rec_id:asc` },
-      { label: "ID (absteigend)", value: `${indexName}/sort/rec_id:desc` },
+      { label: "Default", value: `${indexName}` },
+      { label: "ID (Ascending)", value: `${indexName}/sort/rec_id:asc` },
+      { label: "ID (Descending)", value: `${indexName}/sort/rec_id:desc` },
     ],
   }),
 
@@ -112,11 +122,11 @@ search.addWidgets([
             aus {{#helpers.formatNumber}}{{nbHits}}{{/helpers.formatNumber}}
           {{/areHitsSorted}}
           {{^areHitsSorted}}
-            {{#hasNoResults}}Keine Treffer{{/hasNoResults}}
-            {{#hasOneResult}}1 Treffer{{/hasOneResult}}
-            {{#hasManyResults}}{{#helpers.formatNumber}}{{nbHits}}{{/helpers.formatNumber}} Treffer{{/hasManyResults}}
+            {{#hasNoResults}}No results{{/hasNoResults}}
+            {{#hasOneResult}}1 result{{/hasOneResult}}
+            {{#hasManyResults}}{{#helpers.formatNumber}}{{nbHits}}{{/helpers.formatNumber}} results{{/hasManyResults}}
           {{/areHitsSorted}}
-          gefunden in {{processingTimeMS}}ms
+          found in {{processingTimeMS}}ms
         `,
     },
   }),
@@ -126,7 +136,7 @@ search.addWidgets([
       return state.query.length === 0;
     },
     templates: {
-      header: "Personen",
+      header: "People",
     },
   })(instantsearch.widgets.refinementList)({
     container: "#rf-persons",
@@ -135,7 +145,7 @@ search.addWidgets([
     showMore: true,
     showMoreLimit: 50,
     limit: 10,
-    searchablePlaceholder: "Suche nach Personen",
+    searchablePlaceholder: "Search for people",
     cssClasses: DEFAULT_CSS_CLASSES,
   }),
 
@@ -144,7 +154,7 @@ search.addWidgets([
       return state.query.length === 0;
     },
     templates: {
-      header: "Orte",
+      header: "Places",
     },
   })(instantsearch.widgets.refinementList)({
     container: "#rf-places",
@@ -153,10 +163,10 @@ search.addWidgets([
     showMore: true,
     showMoreLimit: 50,
     limit: 10,
-    searchablePlaceholder: "Suche nach Orten",
+    searchablePlaceholder: "Search for places",
     cssClasses: DEFAULT_CSS_CLASSES,
   }),
-
+  /*
   instantsearch.widgets.panel({
     collapsed: ({ state }) => {
       return state.query.length === 0;
@@ -174,7 +184,7 @@ search.addWidgets([
     searchablePlaceholder: "Suche nach Literatur",
     cssClasses: DEFAULT_CSS_CLASSES,
   }),
-
+*/
   instantsearch.widgets.pagination({
     container: "#pagination",
     padding: 2,
@@ -202,9 +212,9 @@ search.addWidgets([
     },
     transformItems(items) {
       const labelMap = {
-        "person_entities.label": "Personen",
-        "place_entities.label": "Orte",
-        "bibl_entities.label": "Literatur",
+        "person_entities.label": "People",
+        "place_entities.label": "Places",
+        //        "bibl_entities.label": "Literatur",
       };
 
       return items.map((item) => ({
@@ -231,4 +241,3 @@ search.addWidgets([
 ]);
 
 search.start();
-

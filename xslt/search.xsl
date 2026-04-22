@@ -13,7 +13,7 @@
     <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes" omit-xml-declaration="yes"/>
 
     <xsl:template match="/">
-        <xsl:variable name="doc_title" select="'Volltextsuche'"/>
+        <xsl:variable name="doc_title" select="'Full-text Search'"/>
         <html class="h-100" lang="{$default_lang}">
             <head>
                 <xsl:call-template name="html_head">
@@ -70,18 +70,20 @@
                                     <div class="card shadow-sm mb-3">
                                         <div class="card-body bg-light-blue">
                                             <h3 class="card-title h5 fw-bold mb-3">
-                                                <i class="bi bi-tags"/> Entitäten </h3>
+                                                <i class="bi bi-tags"/> Entities </h3>
                                             <div id="rf-persons" class="pb-3"/>
                                             <div id="rf-places" class="pb-3"/>
                                             <div id="rf-works" class="pb-3"/>
+                                            <!--
                                             <div id="rf-bibl" class="pb-3"/>
+                                            -->
                                         </div>
                                     </div>
                                     <!-- Sortierung Section -->
                                     <div class="card shadow-sm mb-3">
                                         <div class="card-body bg-light-blue">
                                             <h3 class="card-title h5 fw-bold mb-3">
-                                                <i class="bi bi-sort-down"/> Sortierung </h3>
+                                                <i class="bi bi-sort-down"/> Sort Order </h3>
                                             <div id="sort-by"/>
                                         </div>
                                     </div>

@@ -25,3 +25,9 @@ div#map {
   background-color: transparent;
   font-weight: normal;
 }
+
+.badge-outline:hover {
+  color: white;
+  background-color: #999;
+  border-color: #999;
+}

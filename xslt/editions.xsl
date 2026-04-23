@@ -133,14 +133,20 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                                                     </svg>
                                                     &#160;
-                                                    <xsl:value-of select='.//tei:correspAction[@type="sent"]/tei:persName/text()'/>
+                                                    <xsl:variable name="sender" select=".//tei:correspAction[@type='sent']/tei:persName"/>
+                                                    <a href="../{normalize-space(replace($sender/@key, '#', ''))}.html" target="_blank">
+                                                        <xsl:value-of select="$sender/text()"/>
+                                                    </a>
                                                 </li>
                                                 <li class="list-group-item">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" style="width: 1.5rem; height: 1.5rem; display: inline-block;">
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z" />
                                                     </svg>
                                                     &#160;
-                                                    <xsl:value-of select='.//tei:correspAction[@type="received"]/tei:persName/text()'/>
+                                                    <xsl:variable name="receiver" select=".//tei:correspAction[@type='received']/tei:persName"/>
+                                                    <a href="../{normalize-space(replace($receiver/@key, '#', ''))}.html" target="_blank">
+                                                        <xsl:value-of select="$receiver/text()"/>
+                                                    </a>
                                                 </li>
                                                 <li class="list-group-item">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" style="width: 1.5rem; height: 1.5rem; display: inline-block;">
@@ -156,7 +162,9 @@
                                                     </svg>
                                                     &#160;
                                                     <xsl:for-each select='//tei:keywords/tei:list/tei:item[@n="topic"]'>
-                                                        <span class="badge badge-outline"><xsl:value-of select="./text()"/></span>&#160;
+                                                        <a href="search.html?letters1916-static[refinementList][keyword_entities.label][0]={normalize-space(.)}" target="_blank">
+                                                            <span class="badge badge-outline"><xsl:value-of select="./text()"/></span>
+                                                        </a>&#160;
                                                     </xsl:for-each>
                                                 </li>
                                             </ul>

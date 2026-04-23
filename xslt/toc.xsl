@@ -33,17 +33,19 @@
             <body class="d-flex flex-column h-100">
             <xsl:call-template name="nav_bar"/>
                 <main class="flex-shrink-0 flex-grow-1">
-                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="ps-5 p-3">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="index.html">
-                                    <xsl:value-of select="$project_short_title"/>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                <xsl:value-of select="$doc_title"/>
-                            </li>
-                        </ol>
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="ps-0 pt-3 pb-3">
+                        <div class="container">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">
+                                        <xsl:value-of select="$project_short_title"/>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <xsl:value-of select="$doc_title"/>
+                                </li>
+                            </ol>
+                        </div>
                     </nav>
                     <div class="container">
                         <h1><xsl:value-of select="$doc_title"/></h1>
@@ -55,6 +57,7 @@
                                     <th scope="col" tabulator-headerFilter="input">From</th>
                                     <th scope="col" tabulator-headerFilter="input">To</th>
                                     <th scope="col" tabulator-headerFilter="input">Date</th>
+                                    <th scope="col" tabulator-formatter="html" tabulator-headerFilter="input">Keywords</th>
                                     <th scope="col" tabulator-headerSort="false" tabulator-download="false" tabulator-visible="false">link_to_doc</th>
                                 </tr>
                             </thead>
@@ -96,6 +99,11 @@
                                         <td>
                                             <xsl:value-of
                                                 select='.//tei:correspAction[@type="sent"]/tei:date/text()'/>
+                                        </td>
+                                        <td>
+                                            <xsl:for-each select='//tei:keywords/tei:list/tei:item[@n="topic"]'>
+                                                <span class="badge badge-outline"><xsl:value-of select="./text()"/></span>&#160;
+                                            </xsl:for-each>
                                         </td>
                                         <td>
                                             <xsl:value-of select="replace((tokenize($full_path, '/')[last()]), '.xml', '.html')"/>

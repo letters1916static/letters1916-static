@@ -56,22 +56,24 @@
             <body class="d-flex flex-column h-100">
                 <xsl:call-template name="nav_bar"/>
                 <main class="flex-shrink-0 flex-grow-1">
-                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="ps-5 p-3">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="index.html">
-                                    <xsl:value-of select="$project_short_title"/>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="toc.html">
-                                    <xsl:value-of select="'Inhaltsverzeichnis'"/>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                <xsl:value-of select="$doc_title"/>
-                            </li>
-                        </ol>
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="ps-0 pt-3 pb-3">
+                        <div class="container">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">
+                                        <xsl:value-of select="$project_short_title"/>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="toc.html">
+                                        <xsl:value-of select="'Explore the collection'"/>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <xsl:value-of select="$doc_title"/>
+                                </li>
+                            </ol>
+                        </div>
                     </nav>
                     <div class="container">
                         <div class="row">
@@ -81,8 +83,8 @@
                                         <xsl:attribute name="href">
                                             <xsl:value-of select="$prev"/>
                                         </xsl:attribute>
-                                        <i class="fs-2 bi bi-chevron-left" title="Zurück zum vorigen Dokument" visually-hidden="true">
-                                            <span class="visually-hidden">Zurück zum vorigen Dokument</span>
+                                        <i class="fs-2 bi bi-chevron-left" title="Previous Letter" visually-hidden="true">
+                                            <span class="visually-hidden">Previous Letter</span>
                                         </i>
                                     </a>
                                 </xsl:if>
@@ -93,8 +95,8 @@
                                 </h1>
                                 <div>
                                     <a href="{$teiSource}">
-                                        <i class="bi bi-download fs-2" title="Zum TEI/XML Dokument" visually-hidden="true">
-                                            <span class="visually-hidden">Zum TEI/XML Dokument</span>
+                                        <i class="bi bi-download fs-2" title="Download TEI/XML Document" visually-hidden="true">
+                                            <span class="visually-hidden">Download TEI/XML Document</span>
                                         </i>
                                     </a>
                                 </div>
@@ -105,8 +107,8 @@
                                         <xsl:attribute name="href">
                                             <xsl:value-of select="$next"/>
                                         </xsl:attribute>
-                                        <i class="fs-2 bi bi-chevron-right" title="Weiter zum nächsten Dokument" visually-hidden="true">
-                                            <span class="visually-hidden">Weiter zum nächsten Dokument</span>
+                                        <i class="fs-2 bi bi-chevron-right" title="Next Letter" visually-hidden="true">
+                                            <span class="visually-hidden">Next Letter</span>
                                         </i>
                                     </a>
                                 </xsl:if>
@@ -123,8 +125,8 @@
                                     </div>
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-read" role="tabpanel" aria-labelledby="nav-read-tab"><xsl:apply-templates select="//tei:body"/></div>
-                                    <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab"><p><i><xsl:value-of select="$summary"/></i></p></div>
+                                    <div class="tab-pane fade pt-3 show active" id="nav-read" role="tabpanel" aria-labelledby="nav-read-tab"><xsl:apply-templates select="//tei:body"/></div>
+                                    <div class="tab-pane fade pt-3" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab"><p><i><xsl:value-of select="$summary"/></i></p></div>
                                     <div class="tab-pane fade pt-3" id="nav-meta" role="tabpanel" aria-labelledby="nav-meta-tab">
                                         <div class="card" style="width: 100%;">
                                             <ul class="list-group list-group-flush">

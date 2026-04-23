@@ -12,6 +12,8 @@ from tqdm import tqdm
 from typesense.exceptions import ObjectNotFound
 
 COLLECTION_NAME = "letters1916-static"
+MIN_DATE = "1916"
+
 files = glob.glob("./data/editions/*.xml")
 tag_blacklist = [
     "{http://www.tei-c.org/ns/1.0}abbr",
@@ -54,6 +56,13 @@ current_schema = {
         {"name": "title", "type": "string"},
         {"name": "full_text", "type": "string"},
         {"name": ".*_entities", "type": "auto", "facet": True, "optional": True},
+        {
+            "name": "year",
+            "type": "int32",
+            "optional": True,
+            "facet": True,
+            "sort": True,
+        },
     ],
 }
 
@@ -116,6 +125,15 @@ for x in tqdm(files, total=len(files)):
         item["id"] = y.replace(" ", "_").lower()
         item["label"] = y
         record["keyword_entities"].append(item)
+        
+    try:
+        date_str = doc.any_xpath("//tei:correspAction[@type='sent']/tei:date/text()")[0]
+    except IndexError:
+        date_str = MIN_DATE
+    try:
+        record["year"] = int(date_str[:4])
+    except ValueError:
+        pass
 
     records.append(record)
 

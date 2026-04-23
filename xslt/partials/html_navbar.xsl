@@ -6,7 +6,8 @@
     <xsl:template name="nav_bar">
         <header>
             <nav aria-label="Primary" class="navbar navbar-expand-lg" style="background-color: #bfb7a4;">
-                <div class="container-fluid">
+                <!--<div class="container-fluid">-->
+                <div class="container">
                     <a class="navbar-brand" href="index.html">
                         <!--
                         <xsl:value-of select="$project_short_title"/>
@@ -22,7 +23,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Project</a>
                                 <ul class="dropdown-menu">
@@ -62,16 +63,17 @@
                             <li class="nav-item">
                                 <a title="API" class="nav-link" href="api.xml">API</a>
                             </li>
-                            -->
                             <li class="nav-item">
                                 <a title="Suche" class="nav-link" href="search.html">Search</a>
                             </li>
-                            <!--
                             <li class="nav-item">
                                 <a title="Suche" class="nav-link" href="noske-search.html">Noske-Suche</a>
                             </li>
                             -->
                         </ul>
+                        <div class="d-none d-lg-block">
+                            <form class="d-flex" role="search" action="search.html" method="get"><label for="nav-search-input" class="visually-hidden">Search</label><input class="form-control me-2" type="text" id="nav-search-input" name="letters1916-static[query]" placeholder="Search Letters 1916-1923" aria-label="Search"/><button class="btn btn-primary" type="submit">Search</button></form>
+                        </div>
                     </div>
                 </div>
             </nav>

@@ -133,6 +133,27 @@ search.addWidgets([
       return state.query.length === 0;
     },
     templates: {
+      header: "Year",
+    },
+  })(instantsearch.widgets.rangeInput)({
+    container: "#rf-year",
+    attribute: "year",
+    templates: {
+      separatorText: "to",
+      submitText: "Search",
+    },
+    cssClasses: {
+      form: "form-inline",
+      input: "form-control",
+      submit: "btn",
+    },
+  }),
+
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },
+    templates: {
       header: "People",
     },
   })(instantsearch.widgets.refinementList)({

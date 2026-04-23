@@ -1,3 +1,12 @@
+:root {
+  --l1916-base-color: #a09785;
+  --l1916-base-color-hover: #aea48f;
+  --l1916-accent-color: #57905c;
+  --l1916-base-color-light: #efefef;
+  --l1916-base-color-dark: #776e63;
+  /*--bs-body-font-family: Open Sans, Helvetica, Arial, sans-serif;*/
+}
+
 /* needed for interactive map in listplace.xsl */
 div#map {
   height: 50vh;
@@ -30,4 +39,24 @@ div#map {
   color: white;
   background-color: #999;
   border-color: #999;
+}
+
+a {
+  color: var(--l1916-base-color-dark);
+}
+
+a:hover {
+  color: var(--l1916-base-color-hover);
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--l1916-base-color);
+  --bs-btn-hover-bg: var(--l1916-base-color-dark);
+  --bs-btn-border-color: var(--l1916-base-color-dark);
+  --bs-btn-hover-border-color: var(--l1916-base-color-dark);
+  --bs-btn-active-border-color: var(--l1916-base-color-dark);
+}
+
+button[role="tab"][aria-selected="false"] {
+  color: var(--l1916-base-color-dark);
 }

@@ -5,7 +5,8 @@
 }
 
 .ais-Hits-item:hover {
-  background-color: rgba(84, 160, 183, 0.16);
+  /*  background-color: rgba(84, 160, 183, 0.16);*/
+  background-color: #efefef;
 }
 
 .ais-Panel-header {
@@ -23,24 +24,24 @@
 }
 
 .ais-ClearRefinements-button {
-  background: rgba(84, 160, 183);  
+  background: rgba(84, 160, 183);
 }
 
 .ais-ClearRefinements .ais-ClearRefinements-button:hover {
-  color: white  
+  color: white;
 }
 
 .ais-CurrentRefinements-category .ais-CurrentRefinements-delete:hover {
-  color: red
+  color: red;
 }
 
 .ais-ClearRefinements-button--disabled {
-	 visibility: hidden;
+  visibility: hidden;
 }
 
 .sticky-sidebar {
-  position: sticky; 
-  top: 20px; 
-  max-height: calc(100vh - 40px); 
-  overflow-y: auto
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
 }

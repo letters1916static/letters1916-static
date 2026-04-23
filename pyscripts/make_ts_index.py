@@ -13,6 +13,7 @@ from typesense.exceptions import ObjectNotFound
 
 COLLECTION_NAME = "letters1916-static"
 MIN_DATE = "1916"
+UNK = "Unknown"
 
 files = glob.glob("./data/editions/*.xml")
 tag_blacklist = [
@@ -59,6 +60,13 @@ current_schema = {
         {
             "name": "year",
             "type": "int32",
+            "optional": True,
+            "facet": True,
+            "sort": True,
+        },
+        {
+            "name": "gender",
+            "type": "string",
             "optional": True,
             "facet": True,
             "sort": True,
@@ -132,6 +140,15 @@ for x in tqdm(files, total=len(files)):
         date_str = MIN_DATE
     try:
         record["year"] = int(date_str[:4])
+    except ValueError:
+        pass
+    
+    try:
+        gender_str = doc.any_xpath('//tei:keywords/tei:list/tei:item[@n="gender"]/text()')[0]
+    except IndexError:
+        gender_str = UNK
+    try:
+        record["gender"] = gender_str
     except ValueError:
         pass
 

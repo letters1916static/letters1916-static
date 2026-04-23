@@ -26,23 +26,25 @@
                 <xsl:call-template name="nav_bar"/>
                 <main class="flex-shrink-0 flex-grow-1">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb"
-                        class="ps-5 p-3">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="index.html">
-                                    <xsl:value-of select="$project_short_title"/>
-                                </a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                <xsl:value-of select="$doc_title"/>
-                            </li>
-                        </ol>
+                        class="ps-0 pt-3 pb-3">
+                        <div class="container">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">
+                                        <xsl:value-of select="$project_short_title"/>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <xsl:value-of select="$doc_title"/>
+                                </li>
+                            </ol>
+                        </div>
                     </nav>
-                    <div class="container-fluid d-md-px-5 pb-4">
+                    <div class="container d-md-px-5 pb-4">
                         <h1 class="display-5 text-center">
                             <xsl:value-of select="$doc_title"/>
                         </h1>
-                        <div class="text-center p-3">
+                        <div class="text-center ps-0 pt-3 pb-3">
                             <div class="d-flex gap-2 align-items-center mb-3">
                                 <button id="filter-button" aria-label="filter"
                                     class="btn btn-outline-secondary d-md-none d-flex align-items-center justify-content-center flex-shrink-0"
@@ -70,8 +72,9 @@
                                     <div class="card shadow-sm mb-3">
                                         <div class="card-body bg-light-blue">
                                             <h3 class="card-title h5 fw-bold mb-3">
-                                                <i class="bi bi-tags"/> Entities </h3>
+                                                <i class="bi bi-tags"/> Letters </h3>
                                             <div id="rf-year" class="pb-3"/>
+                                            <div id="rf-gender" class="pb-3"/>
                                             <div id="rf-persons" class="pb-3"/>
                                             <div id="rf-places" class="pb-3"/>
                                             <div id="rf-keywords" class="pb-3"/>

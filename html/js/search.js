@@ -60,10 +60,10 @@ search.addWidgets([
       item: "w-100",
     },
     templates: {
-      empty: "Keine Resultate für <q>{{ query }}</q>",
+      empty: "No results for <q>{{ query }}</q>",
       item(hit, { html, components }) {
         return html` <div>
-          <div class="fs-3">
+          <div class="fs-5 fw-bold mb-1">
             <a href="${hit.rec_id}.html" class="custom-link">${hit.title}</a>
           </div>
           <p>
@@ -113,10 +113,10 @@ search.addWidgets([
     templates: {
       text: `
           {{#areHitsSorted}}
-            {{#hasNoSortedResults}}Keine Treffer{{/hasNoSortedResults}}
-            {{#hasOneSortedResults}}1 Treffer{{/hasOneSortedResults}}
-            {{#hasManySortedResults}}{{#helpers.formatNumber}}{{nbSortedHits}}{{/helpers.formatNumber}} Treffer {{/hasManySortedResults}}
-            aus {{#helpers.formatNumber}}{{nbHits}}{{/helpers.formatNumber}}
+            {{#hasNoSortedResults}}No sorted results{{/hasNoSortedResults}}
+            {{#hasOneSortedResults}}1 sorted result{{/hasOneSortedResults}}
+            {{#hasManySortedResults}}{{#helpers.formatNumber}}{{nbSortedHits}}{{/helpers.formatNumber}} sorted results {{/hasManySortedResults}}
+            out of {{#helpers.formatNumber}}{{nbHits}}{{/helpers.formatNumber}}
           {{/areHitsSorted}}
           {{^areHitsSorted}}
             {{#hasNoResults}}No results{{/hasNoResults}}
@@ -147,6 +147,24 @@ search.addWidgets([
       input: "form-control",
       submit: "btn",
     },
+  }),
+
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },
+    templates: {
+      header: "Gender",
+    },
+  })(instantsearch.widgets.refinementList)({
+    container: "#rf-gender",
+    attribute: "gender",
+    searchable: false,
+    showMore: false,
+    showMoreLimit: 50,
+    limit: 10,
+    searchablePlaceholder: "Search for gender",
+    cssClasses: DEFAULT_CSS_CLASSES,
   }),
 
   instantsearch.widgets.panel({

@@ -136,7 +136,7 @@
                                                     </svg>
                                                     &#160;
                                                     <xsl:variable name="sender" select=".//tei:correspAction[@type='sent']/tei:persName"/>
-                                                    <a href="../{normalize-space(replace($sender/@key, '#', ''))}.html" target="_blank">
+                                                    <a href="{normalize-space(replace($sender/@key, '#', ''))}.html" target="_blank">
                                                         <xsl:value-of select="$sender/text()"/>
                                                     </a>
                                                 </li>
@@ -146,7 +146,7 @@
                                                     </svg>
                                                     &#160;
                                                     <xsl:variable name="receiver" select=".//tei:correspAction[@type='received']/tei:persName"/>
-                                                    <a href="../{normalize-space(replace($receiver/@key, '#', ''))}.html" target="_blank">
+                                                    <a href="{normalize-space(replace($receiver/@key, '#', ''))}.html" target="_blank">
                                                         <xsl:value-of select="$receiver/text()"/>
                                                     </a>
                                                 </li>

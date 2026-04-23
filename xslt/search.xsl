@@ -41,7 +41,8 @@
                         </div>
                     </nav>
                     <div class="container d-md-px-5 pb-4">
-                        <h1 class="display-5 text-center">
+                        <!--<h1 class="display-5 text-center">-->
+                        <h1>
                             <xsl:value-of select="$doc_title"/>
                         </h1>
                         <div class="text-center ps-0 pt-3 pb-3">

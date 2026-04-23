@@ -138,6 +138,7 @@ search.addWidgets([
   })(instantsearch.widgets.rangeInput)({
     container: "#rf-year",
     attribute: "year",
+    min: 1916,
     templates: {
       separatorText: "to",
       submitText: "Search",

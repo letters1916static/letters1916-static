@@ -2,6 +2,9 @@
 name: Deploy static content to Pages
 
 on:
+  push:
+    branches:
+      - main
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -42,6 +45,8 @@ jobs:
         run: ./fetch_data.sh
       - name: Build the app
         run: ant
+      - name: Populate Typesense Index
+        run: uv run pyscripts/make_ts_index.py
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

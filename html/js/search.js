@@ -1,23 +1,16 @@
 const indexName = "letters1916-static";
 
-// const apiKey = "0drlT8CHD6T9z8QxQjYXvSWT2dZ75nPv"; /* change this */
-const apiKey = "xyz";
+const apiKey = "2cuq4DHp6QFB2hOTcAEXbduwE5ujLEzD"; /* change this */
+// const apiKey = "xyz";
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
     apiKey: apiKey,
-    /*     nodes: [
+    nodes: [
       {
         host: "typesense.acdh-dev.oeaw.ac.at",
         port: "443",
         protocol: "https",
-      },
-    ], */
-    nodes: [
-      {
-        host: "localhost",
-        port: "8108",
-        protocol: "http",
       },
     ],
     cacheSearchResultsForSeconds: 2 * 60,

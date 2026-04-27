@@ -79,10 +79,6 @@
                                             <div id="rf-persons" class="pb-3"/>
                                             <div id="rf-places" class="pb-3"/>
                                             <div id="rf-keywords" class="pb-3"/>
-                                            <!--
-                                            <div id="rf-works" class="pb-3"/>
-                                            <div id="rf-bibl" class="pb-3"/>
-                                            -->
                                         </div>
                                     </div>
                                     <!-- Sortierung Section -->

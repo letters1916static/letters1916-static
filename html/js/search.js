@@ -84,15 +84,6 @@ search.addWidgets([
                 ><i class="bi bi-person pe-1"></i>${item.label}</a
               >`,
           )}
-          <!--
-          <br />
-          ${hit.bibl_entities.map(
-            (item) =>
-              html`<a href="${item.id}.html" class="pe-2 custom-link"
-                ><i class="bi bi-book pe-1"></i>${item.label}</a
-              >`,
-          )}
-          -->
           <br />
         </div>`;
       },

@@ -97,7 +97,7 @@ for x in tqdm(files, total=len(files)):
         item["id"] = get_xmlid(y)
         item["label"] = make_entity_label(
             y.xpath("./tei:persName[1]", namespaces=namespaces)[0]
-        )
+        )[0]
         record["person_entities"].append(item)
 
     record["place_entities"] = []
@@ -106,27 +106,9 @@ for x in tqdm(files, total=len(files)):
         item["id"] = get_xmlid(y)
         item["label"] = make_entity_label(
             y.xpath("./tei:placeName[1]", namespaces=namespaces)[0]
-        )
+        )[0]
         record["place_entities"].append(item)
-
-    record["org_entities"] = []
-    for y in doc.any_xpath(".//tei:back//tei:listOrg/tei:org[@xml:id]"):
-        item = {}
-        item["id"] = get_xmlid(y)
-        item["label"] = make_entity_label(
-            y.xpath("./tei:orgName[1]", namespaces=namespaces)[0]
-        )
-        record["org_entities"].append(item)
-
-    record["bibl_entities"] = []
-    for y in doc.any_xpath(".//tei:back//tei:listBibl/tei:bibl[@xml:id]"):
-        item = {}
-        item["id"] = get_xmlid(y)
-        item["label"] = extract_fulltext(
-            y.xpath("./tei:title", namespaces=namespaces)[0]
-        )
-        record["bibl_entities"].append(item)
-        
+      
     record["keyword_entities"] = []
     for y in doc.any_xpath('//tei:keywords/tei:list/tei:item[@n="topic"]/text()'):
         item = {}

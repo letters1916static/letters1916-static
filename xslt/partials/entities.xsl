@@ -46,7 +46,7 @@
                 </xsl:for-each>
             </xsl:if>
             <xsl:if test="./tei:noteGrp/tei:note[@type = 'mentions']">
-                <dt>Erwähnt in</dt>
+                <dt>Mentioned in</dt>
                 <xsl:for-each select="./tei:noteGrp/tei:note[@type = 'mentions']">
                     <dd>
                         <a href="{replace(@target, '.xml', '.html')}">
@@ -98,7 +98,7 @@
                 </dd>
             </xsl:if>
             <xsl:if test="./tei:noteGrp/tei:note[@type = 'mentions']">
-                <dt>Erwähnt in</dt>
+                <dt>Mentioned in</dt>
                 <xsl:for-each select="./tei:noteGrp/tei:note[@type = 'mentions']">
                     <dd>
                         <a href="{replace(@target, '.xml', '.html')}">
@@ -226,7 +226,7 @@
                 </dd>
             </xsl:if>
             <xsl:if test="./tei:noteGrp/tei:note[@type = 'mentions']">
-                <dt>Erwähnt in</dt>
+                <dt>Mentioned in</dt>
                 <xsl:for-each select="./tei:noteGrp/tei:note[@type = 'mentions']">
                     <dd>
                         <a href="{replace(@target, '.xml', '.html')}">

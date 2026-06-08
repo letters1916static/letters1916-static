@@ -36,6 +36,7 @@
                             <div class="col-lg-6 mx-auto">
                                 <p class="mb-4"><i>Letters 1916-1923</i> is Ireland's first participatory digital humanities project. Begun in September 2013 as Letters 1916, in 2017 it expanded its collection period to the end of the Civil War through a generous grant from the Irish Research Council.</p>
                                 <p>This digital collection includes letters held at institutions in Ireland and abroad alongside those in private collections. There are thousands of letters connecting hundreds of lives commenting a wide range of topics, from wars and violence at home and abroad including the Easter Rising, The Great War, The Anglo-Irish and Civil War, literature and art, love,  politics, business, and ordinary life. Letters 1916-1923  adds a new perspective to the events of the period, a confidential and intimate glimpse into early 20th Century life in Ireland, as well as how Ireland was viewed abroad.</p>
+                                <p>In 2026 the project was migrated from a participatory project to a static website for preservation purposes. New letters will be added to the website, but less quickly than previously.</p>
                                 <a class="btn btn-outline-secondary" href="about.html" role="button">Read more</a>
                             </div>
                         </div>

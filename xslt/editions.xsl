@@ -95,7 +95,7 @@
                                 </h1>
                                 <div>
                                     <a href="{$teiSource}">
-                                        <i class="bi bi-code-square fs-2" title="Download TEI/XML Document" visually-hidden="true">
+                                        <i class="bi bi-code-square fs-2" title="To Encoded Text" visually-hidden="true">
                                             <span class="visually-hidden">To Encoded Text</span>
                                         </i>
                                     </a>

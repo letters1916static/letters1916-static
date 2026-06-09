@@ -75,12 +75,12 @@
             <xsl:choose>
                 <xsl:when test="@rendition = '#em'">
                     <xsl:attribute name="class">
-                        <xsl:text>italic</xsl:text>
+                        <xsl:text>fst-italic</xsl:text>
                     </xsl:attribute>
                 </xsl:when>
                 <xsl:when test="@rendition = '#italic'">
                     <xsl:attribute name="class">
-                        <xsl:text>italic</xsl:text>
+                        <xsl:text>fst-italic</xsl:text>
                     </xsl:attribute>
                 </xsl:when>
                 <xsl:when test="@rendition = '#smallcaps'">

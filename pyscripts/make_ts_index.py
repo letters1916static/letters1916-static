@@ -115,7 +115,8 @@ for x in tqdm(files, total=len(files)):
         item["id"] = y.replace(" ", "_").lower()
         item["label"] = y
         record["keyword_entities"].append(item)
-        
+    
+    # DATE facet    
     try:
         date_str = doc.any_xpath("//tei:correspAction[@type='sent']/tei:date/text()")[0]
     except IndexError:
@@ -125,6 +126,7 @@ for x in tqdm(files, total=len(files)):
     except ValueError:
         pass
     
+    # GENDER facet
     try:
         gender_str = doc.any_xpath('//tei:keywords/tei:list/tei:item[@n="gender"]/text()')[0]
     except IndexError:
@@ -133,6 +135,37 @@ for x in tqdm(files, total=len(files)):
         record["gender"] = gender_str
     except ValueError:
         pass
+    
+    # LANGUAGE facet
+    try:
+        language_str = doc.any_xpath("//tei:langUsage/tei:language/text()")[0]
+    except IndexError:
+        language_str = UNK
+    try:
+        record["language"] = language_str
+    except ValueError:
+        pass
+    
+    # INSTITUTION facet
+    try:
+        institution_str = doc.any_xpath("//tei:msIdentifier/tei:repository/text()")[0]
+    except IndexError:
+        institution_str = UNK
+    try:
+        record["institution"] = institution_str
+    except ValueError:
+        pass
+    
+    # COLLECTION facet
+    try:
+        collection_str = doc.any_xpath("//tei:msIdentifier/tei:collection/text()")[0]
+    except IndexError:
+        collection_str = UNK
+    try:
+        record["collection"] = collection_str
+    except ValueError:
+        pass
+
 
     records.append(record)
 

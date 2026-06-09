@@ -76,8 +76,11 @@
                                                 <i class="bi bi-tags"/> Letters </h3>
                                             <div id="rf-year" class="pb-3"/>
                                             <div id="rf-gender" class="pb-3"/>
+                                            <div id="rf-language" class="pb-3"/>
                                             <div id="rf-persons" class="pb-3"/>
                                             <div id="rf-places" class="pb-3"/>
+                                            <div id="rf-repository" class="pb-3"/>
+                                            <div id="rf-collection" class="pb-3"/>
                                             <div id="rf-keywords" class="pb-3"/>
                                         </div>
                                     </div>

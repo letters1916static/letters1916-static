@@ -212,6 +212,60 @@ search.addWidgets([
     searchablePlaceholder: "Search for keywords",
     cssClasses: DEFAULT_CSS_CLASSES,
   }),
+
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },
+    templates: {
+      header: "Language",
+    },
+  })(instantsearch.widgets.refinementList)({
+    container: "#rf-language",
+    attribute: "language",
+    searchable: false,
+    showMore: false,
+    showMoreLimit: 50,
+    limit: 10,
+    searchablePlaceholder: "Search for language",
+    cssClasses: DEFAULT_CSS_CLASSES,
+  }),
+
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },
+    templates: {
+      header: "Holding Institution",
+    },
+  })(instantsearch.widgets.refinementList)({
+    container: "#rf-repository",
+    attribute: "repository",
+    searchable: false,
+    showMore: false,
+    showMoreLimit: 50,
+    limit: 10,
+    searchablePlaceholder: "Search for institution",
+    cssClasses: DEFAULT_CSS_CLASSES,
+  }),
+
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },
+    templates: {
+      header: "Collection",
+    },
+  })(instantsearch.widgets.refinementList)({
+    container: "#rf-collection",
+    attribute: "collection",
+    searchable: false,
+    showMore: false,
+    showMoreLimit: 50,
+    limit: 10,
+    searchablePlaceholder: "Search for collection",
+    cssClasses: DEFAULT_CSS_CLASSES,
+  }),
   /*
   instantsearch.widgets.panel({
     collapsed: ({ state }) => {

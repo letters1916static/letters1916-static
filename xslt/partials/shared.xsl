@@ -90,7 +90,7 @@
                 </xsl:when>
                 <xsl:when test="@rendition = '#bold'">
                     <xsl:attribute name="class">
-                        <xsl:text>bold</xsl:text>
+                        <xsl:text>fw-bold</xsl:text>
                     </xsl:attribute>
                 </xsl:when>
             </xsl:choose>

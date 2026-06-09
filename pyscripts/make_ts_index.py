@@ -71,6 +71,27 @@ current_schema = {
             "facet": True,
             "sort": True,
         },
+        {
+            "name": "language",
+            "type": "string",
+            "optional": True,
+            "facet": True,
+            "sort": True,
+        },
+        {
+            "name": "institution",
+            "type": "string",
+            "optional": True,
+            "facet": True,
+            "sort": True,
+        },
+        {
+            "name": "collection",
+            "type": "string",
+            "optional": True,
+            "facet": True,
+            "sort": True,
+        },
     ],
 }
 

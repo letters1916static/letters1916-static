@@ -79,7 +79,7 @@ current_schema = {
             "sort": True,
         },
         {
-            "name": "institution",
+            "name": "repository",
             "type": "string",
             "optional": True,
             "facet": True,
@@ -167,13 +167,13 @@ for x in tqdm(files, total=len(files)):
     except ValueError:
         pass
     
-    # INSTITUTION facet
+    # REPOSITORY facet
     try:
-        institution_str = doc.any_xpath("//tei:msIdentifier/tei:repository/text()")[0]
+        repository_str = doc.any_xpath("//tei:msIdentifier/tei:repository/text()")[0]
     except IndexError:
-        institution_str = UNK
+        repository_str = UNK
     try:
-        record["institution"] = institution_str
+        record["repository"] = repository_str
     except ValueError:
         pass
     

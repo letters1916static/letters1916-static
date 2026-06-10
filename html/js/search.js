@@ -236,34 +236,16 @@ search.addWidgets([
       return state.query.length === 0;
     },
     templates: {
-      header: "Holding Institution",
+      header: "Sources",
     },
   })(instantsearch.widgets.refinementList)({
     container: "#rf-repository",
     attribute: "repository",
     searchable: false,
     showMore: true,
-    showMoreLimit: 50,
+    showMoreLimit: 100,
     limit: 10,
     searchablePlaceholder: "Search for institution",
-    cssClasses: DEFAULT_CSS_CLASSES,
-  }),
-
-  instantsearch.widgets.panel({
-    collapsed: ({ state }) => {
-      return state.query.length === 0;
-    },
-    templates: {
-      header: "Collection",
-    },
-  })(instantsearch.widgets.refinementList)({
-    container: "#rf-collection",
-    attribute: "collection",
-    searchable: false,
-    showMore: true,
-    showMoreLimit: 50,
-    limit: 10,
-    searchablePlaceholder: "Search for collection",
     cssClasses: DEFAULT_CSS_CLASSES,
   }),
   /*

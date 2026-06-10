@@ -84,14 +84,7 @@ current_schema = {
             "optional": True,
             "facet": True,
             "sort": True,
-        },
-        {
-            "name": "collection",
-            "type": "string",
-            "optional": True,
-            "facet": True,
-            "sort": True,
-        },
+        }
     ],
 }
 
@@ -176,17 +169,6 @@ for x in tqdm(files, total=len(files)):
         record["repository"] = repository_str
     except ValueError:
         pass
-    
-    # COLLECTION facet
-    try:
-        collection_str = doc.any_xpath("//tei:msIdentifier/tei:collection/text()")[0]
-    except IndexError:
-        collection_str = UNK
-    try:
-        record["collection"] = collection_str
-    except ValueError:
-        pass
-
 
     records.append(record)
 

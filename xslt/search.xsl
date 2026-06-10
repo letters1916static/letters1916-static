@@ -80,7 +80,6 @@
                                             <div id="rf-persons" class="pb-3"/>
                                             <div id="rf-places" class="pb-3"/>
                                             <div id="rf-repository" class="pb-3"/>
-                                            <div id="rf-collection" class="pb-3"/>
                                             <div id="rf-keywords" class="pb-3"/>
                                         </div>
                                     </div>

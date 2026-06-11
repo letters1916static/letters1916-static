@@ -218,6 +218,25 @@ search.addWidgets([
       return state.query.length === 0;
     },
     templates: {
+      header: "Sources",
+    },
+  })(instantsearch.widgets.refinementList)({
+    container: "#rf-repository",
+    attribute: "repository_entities.label",
+    searchable: true,
+    sortBy: ["name:asc"],
+    showMore: true,
+    showMoreLimit: 100,
+    limit: 10,
+    searchablePlaceholder: "Search for sources",
+    cssClasses: DEFAULT_CSS_CLASSES,
+  }),
+
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },
+    templates: {
       header: "Language",
     },
   })(instantsearch.widgets.refinementList)({
@@ -228,24 +247,6 @@ search.addWidgets([
     showMoreLimit: 50,
     limit: 10,
     searchablePlaceholder: "Search for language",
-    cssClasses: DEFAULT_CSS_CLASSES,
-  }),
-
-  instantsearch.widgets.panel({
-    collapsed: ({ state }) => {
-      return state.query.length === 0;
-    },
-    templates: {
-      header: "Sources",
-    },
-  })(instantsearch.widgets.refinementList)({
-    container: "#rf-repository",
-    attribute: "repository",
-    searchable: false,
-    showMore: true,
-    showMoreLimit: 100,
-    limit: 10,
-    searchablePlaceholder: "Search for institution",
     cssClasses: DEFAULT_CSS_CLASSES,
   }),
   /*

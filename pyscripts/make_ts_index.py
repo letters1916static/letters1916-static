@@ -78,13 +78,6 @@ current_schema = {
             "facet": True,
             "sort": True,
         },
-        {
-            "name": "repository",
-            "type": "string",
-            "optional": True,
-            "facet": True,
-            "sort": True,
-        }
     ],
 }
 
@@ -122,13 +115,20 @@ for x in tqdm(files, total=len(files)):
             y.xpath("./tei:placeName[1]", namespaces=namespaces)[0]
         )[0]
         record["place_entities"].append(item)
-      
+
     record["keyword_entities"] = []
     for y in doc.any_xpath('//tei:keywords/tei:list/tei:item[@n="topic"]/text()'):
         item = {}
         item["id"] = y.replace(" ", "_").lower()
         item["label"] = y
         record["keyword_entities"].append(item)
+        
+    record["repository_entities"] = []
+    for y in doc.any_xpath("//tei:msIdentifier/tei:repository/text()"):
+        item = {}
+        item["id"] = y.strip().replace(" ", "_").lower()
+        item["label"] = y.strip()
+        record["repository_entities"].append(item)
     
     # DATE facet    
     try:
@@ -157,16 +157,6 @@ for x in tqdm(files, total=len(files)):
         language_str = UNK
     try:
         record["language"] = language_str
-    except ValueError:
-        pass
-    
-    # REPOSITORY facet
-    try:
-        repository_str = doc.any_xpath("//tei:msIdentifier/tei:repository/text()")[0]
-    except IndexError:
-        repository_str = UNK
-    try:
-        record["repository"] = repository_str
     except ValueError:
         pass
 

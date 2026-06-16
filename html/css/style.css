@@ -62,6 +62,10 @@ a:hover {
   --bs-btn-hover-border-color: var(--l1916-base-color-dark);
   --bs-btn-active-border-color: var(--l1916-base-color-dark);
 }
+.btn-primary:disabled {
+  --bs-btn-bg: var(--l1916-base-color-light);
+  --bs-btn-border-color: var(--l1916-base-color-dark);
+}
 
 button[role="tab"][aria-selected="false"] {
   color: var(--l1916-base-color-dark);

@@ -11,6 +11,14 @@
     <xsl:template match="tei:div">
         <div><xsl:apply-templates/></div>
     </xsl:template>
+    <xsl:template match="tei:pb">
+        <span class="anchor-pb"></span>
+        <span class="pb d-none" source="{@facs}"><xsl:value-of select="./@n"/></span>
+        <xsl:if test="./@n != '1'">
+            <br/>
+        </xsl:if>
+        <span class="badge rounded-pill">page <xsl:value-of select="./@n"/></span><br/>
+    </xsl:template>
     <xsl:template match="tei:unclear">
         <abbr title="unclear"><xsl:apply-templates/></abbr>
     </xsl:template>
@@ -38,43 +46,6 @@
         <xsl:if test="normalize-space() != ''">
             <br/><br/><xsl:apply-templates/><br/>
         </xsl:if>
-    </xsl:template>
-
-    <xsl:template match="tei:ab">
-        <div>
-            <nav class="d-flex justify-content-between align-items-center mb-4">
-                <div>
-                    <button
-                    id="backButton"
-                    type="button"
-                    class="btn btn-primary btn-sm me-2"
-                    disabled=""
-                    >
-                    Previous page
-                    </button>
-                    <button
-                    id="forwardButton"
-                    type="button"
-                    class="btn btn-primary btn-sm"
-                    >
-                    Next page
-                    </button>
-                </div>
-            </nav>
-            <xsl:for-each-group select="node()" group-starting-with="tei:pb">
-                <xsl:if test="self::tei:pb">
-                    <xsl:variable select="./@n" name="page-id"/>
-                    <div id="page-{$page-id}" class="letter-page">
-                        <span class="anchor-pb"></span>
-                        <span class="pb d-none" source="{@facs}"><xsl:value-of select="./@n"/></span>
-                        <span class="badge rounded-pill">page <xsl:value-of select="./@n"/></span><br/>
-                        <div>
-                            <xsl:apply-templates select="current-group()[not(self::tei:pb)]"/>
-                        </div>
-                    </div>
-                </xsl:if>
-            </xsl:for-each-group>
-        </div>
     </xsl:template>
 
     <xsl:template match="tei:note">

@@ -147,6 +147,7 @@
                                     </li>
                                 </ol>
                             </nav>
+                            <!--
                             <div class="container">
                                 <h1>
                                     <xsl:value-of select="$name"/>
@@ -159,6 +160,33 @@
                                     <xsl:call-template name="blockquote">
                                         <xsl:with-param name="pageId" select="$filename"/>
                                     </xsl:call-template>
+                                </div>
+                            </div>>
+                            -->
+                            <div class="container">
+                                <h1 class="display-5 text-center">
+                                    <xsl:value-of select="$name"/>
+                                </h1>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h2>Mentioned in</h2>
+                                        <ul>
+                                            <xsl:for-each select=".//tei:noteGrp//tei:note">
+                                                <li>
+                                                    <a href="{replace(./@target, '.xml', '.html')}">
+                                                        <xsl:value-of select="./text()"/>
+                                                    </a>
+                                                </li>
+                                            </xsl:for-each>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h2>Info</h2>
+                                        <xsl:call-template name="place_detail"/>
+                                        <xsl:if test="./tei:location/tei:geo">
+                                            <div id="map_detail"/>
+                                        </xsl:if>
+                                    </div>
                                 </div>
                             </div>
                         </main>

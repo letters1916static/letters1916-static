@@ -161,6 +161,7 @@
     
     <xsl:template match="tei:place" name="place_detail">
         <dl>
+            <!--
             <dt>Place</dt>
             <dd>
                 <xsl:choose>
@@ -172,21 +173,17 @@
                     </xsl:otherwise>
                 </xsl:choose>
             </dd>
+            -->
             <xsl:if test="./tei:location[@type = 'located_in_place']">
+                <xsl:variable select="./tei:country" name="country"/>
                 <dt>Located in</dt>
                 <xsl:for-each select="./tei:location[@type = 'located_in_place']">
                     <dd>
-                        <a href="{./tei:placeName/@key}.html">
-                            <xsl:value-of select="./tei:placeName"/>
-                        </a>
+                        <!--a href="{./tei:placeName/@key}.html"-->
+                            <xsl:value-of select="concat(./tei:placeName/text(), ' (', $country, ')')"/>
+                        <!--/a-->
                     </dd>
                 </xsl:for-each>
-            </xsl:if>
-            <xsl:if test="./tei:country">
-                <dt>Country</dt>
-                <dd>
-                    <xsl:value-of select="./tei:country"/>
-                </dd>
             </xsl:if>
             <xsl:if test="./tei:settlement">
                 <dt>Ortstyp</dt>
@@ -200,8 +197,20 @@
                 <xsl:for-each select="./tei:idno">
                     <dd>
                         <xsl:choose>
+                            <!---
                             <xsl:when test="starts-with(./text(), 'http')">
                                 <a href="{./text()}">
+                                    <xsl:value-of select="."/>
+                                </a>
+                            </xsl:when>
+                            -->
+                            <xsl:when test="./@type = 'geonames'">
+                                <a href="https://sws.geonames.org/{./text()}" target="_blank">
+                                    <xsl:value-of select="."/>
+                                </a>
+                            </xsl:when>
+                            <xsl:when test="./@type = 'wikidata'">
+                                <a href="https://wikidata.org/wiki/{./text()}" target="_blank">
                                     <xsl:value-of select="."/>
                                 </a>
                             </xsl:when>
@@ -213,18 +222,12 @@
                 </xsl:for-each>
             </xsl:if>
             <xsl:if test=".//tei:location">
-                <dt>Latitude</dt>
+                <dt>Coordinates</dt>
                 <dd>
-                    <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1], '\s')[1]"/>
+                    <xsl:value-of select="concat(tokenize(./tei:location[1]/tei:geo[1], '\s')[1], ' ', tokenize(./tei:location[1]/tei:geo[1], '\s')[2])"/>
                 </dd>
             </xsl:if>
-            <xsl:if test=".//tei:location">
-                
-                <dt>Longitude</dt>
-                <dd>
-                    <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1], '\s')[2]"/>
-                </dd>
-            </xsl:if>
+            <!---
             <xsl:if test="./tei:noteGrp/tei:note[@type = 'mentions']">
                 <dt>Mentioned in</dt>
                 <xsl:for-each select="./tei:noteGrp/tei:note[@type = 'mentions']">
@@ -235,6 +238,7 @@
                     </dd>
                 </xsl:for-each>
             </xsl:if>
+            -->
         </dl>
     </xsl:template>
 </xsl:stylesheet>

@@ -61,12 +61,20 @@
                         <div id="map"/>
                         <table id="placesTable">
                             <thead>
-                                <tr>
+                                <tr><!--
                                     <th scope="col">Place</th>
-                                    <th scope="col">Erwähnungen</th>
+                                    <th scope="col">Mentions</th>
                                     <th scope="col">lat</th>
                                     <th scope="col">lng</th>
-                                    <th scope="col">linkToEntity</th>
+                                    <th scope="col">linkToEntity</th>-->
+                                    <th scope="col" width="20" tabulator-formatter="html" tabulator-headerSort="false" tabulator-download="false">#</th>
+                                    <th scope="col" tabulator-formatter="html" tabulator-headerFilter="input">Place</th>
+                                    <th scope="col" tabulator-headerFilter="input">Located in</th>
+                                    <th scope="col" tabulator-headerFilter="input">Country</th>
+                                    <th scope="col" tabulator-headerFilter="input">Latitude</th>
+                                    <th scope="col" tabulator-headerFilter="input">Longitude</th>
+                                    <th scope="col" tabulator-headerFilter="input">Mentions</th>
+                                    <th scope="col" tabulator-headerSort="false" tabulator-download="false" tabulator-visible="false">link_to_doc</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,10 +84,21 @@
                                     </xsl:variable>
                                     <tr>
                                         <td>
+                                            <a>
+                                                <xsl:attribute name="href">
+                                                    <xsl:value-of select="concat($id, '.html')"/>
+                                                </xsl:attribute>
+                                                <i class="bi bi-link-45deg"/>
+                                            </a>
+                                        </td>
+                                        <td>
                                             <xsl:value-of select="./tei:placeName[1]/text()"/>
                                         </td>
                                         <td>
-                                            <xsl:value-of select="count(.//tei:note[@type='mentions'])"/>
+                                            <xsl:value-of select="./tei:location[@type='located_in_place']/tei:placeName/text()"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="./tei:country/text()"/>
                                         </td>
                                         <td>
                                             <xsl:choose>
@@ -94,6 +113,9 @@
                                                     <xsl:value-of select="replace(tokenize(./tei:location[1]/tei:geo/text(), ' ')[last()], ',', '.')"/>
                                                 </xsl:when>
                                             </xsl:choose>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="count(.//tei:note[@type='mentions'])"/>
                                         </td>
                                         <td>
                                             <xsl:value-of select="$id"/>

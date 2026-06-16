@@ -173,7 +173,7 @@
                 </xsl:choose>
             </dd>
             <xsl:if test="./tei:location[@type = 'located_in_place']">
-                <dt>Teil von</dt>
+                <dt>Located in</dt>
                 <xsl:for-each select="./tei:location[@type = 'located_in_place']">
                     <dd>
                         <a href="{./tei:placeName/@key}.html">
@@ -183,7 +183,7 @@
                 </xsl:for-each>
             </xsl:if>
             <xsl:if test="./tei:country">
-                <dt>Land</dt>
+                <dt>Country</dt>
                 <dd>
                     <xsl:value-of select="./tei:country"/>
                 </dd>
@@ -213,14 +213,14 @@
                 </xsl:for-each>
             </xsl:if>
             <xsl:if test=".//tei:location">
-                <dt>Breitengrad</dt>
+                <dt>Latitude</dt>
                 <dd>
                     <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1], '\s')[1]"/>
                 </dd>
             </xsl:if>
             <xsl:if test=".//tei:location">
                 
-                <dt>Längengrad</dt>
+                <dt>Longitude</dt>
                 <dd>
                     <xsl:value-of select="tokenize(./tei:location[1]/tei:geo[1], '\s')[2]"/>
                 </dd>

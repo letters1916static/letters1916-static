@@ -31,6 +31,12 @@
                                         <a class="dropdown-item" href="about.html">About</a>
                                     </li>
                                     <li>
+                                        <a class="dropdown-item" href="team.html">Team</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="institutions.html">Institutions</a>
+                                    </li>
+                                    <li>
                                         <a class="dropdown-item" href="imprint.html">Impressum</a>
                                     </li>
                                 </ul>
@@ -46,10 +52,10 @@
                                     <li>
                                         <a class="dropdown-item" href="listperson.html">Persons</a>
                                     </li>
-                                    <!--
                                     <li>
                                         <a class="dropdown-item" href="listplace.html">Places</a>
                                     </li>
+                                    <!--
                                     <li>
                                         <a class="dropdown-item" href="listorg.html">Organisationen</a>
                                     </li>

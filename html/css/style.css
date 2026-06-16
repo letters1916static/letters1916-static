@@ -41,6 +41,12 @@ div#map {
   border-color: #999;
 }
 
+.rounded-pill {
+  color: white;
+  background-color: #999;
+  border-color: #999;
+}
+
 a {
   color: var(--l1916-base-color-dark);
 }

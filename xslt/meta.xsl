@@ -85,5 +85,33 @@
     </xsl:template>
     <xsl:template match="tei:del">
         <del><xsl:apply-templates/></del>
-    </xsl:template>    
+    </xsl:template>  
+    <xsl:template match="tei:div[@type='section']/tei:head">
+        <h2 class="fs-3"><xsl:value-of select="."/></h2>
+    </xsl:template>
+    <!--
+    <xsl:template match="tei:list/tei:head">
+        <h3 class="fs-4"><xsl:value-of select="."/></h3>
+    </xsl:template>
+    -->
+    <xsl:template match="tei:div[@n='2']">
+        <h2 class="fs-3"><xsl:value-of select="tei:head"/></h2>
+        <div class="accordion accordion-flush" id="accordionFlushTeam" style="--bs-accordion-active-bg: #efefef; --bs-accordion-btn-focus-box-shadow: none">
+            <xsl:for-each select="tei:div[@type='subsection']">
+                <xsl:variable name="section-id" select="./@xml:id"/>
+                <div class="accordion-item">
+                    <h3 class="fs-4 accordion-header" id="flush-heading-{$section-id}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{$section-id}" aria-expanded="false" aria-controls="flush-collapse-{$section-id}">
+                            <xsl:value-of select="tei:head"/>
+                        </button>
+                    </h3>
+                    <div id="flush-collapse-{$section-id}" class="accordion-collapse collapse" aria-labelledby="flush-heading-{$section-id}" data-bs-parent="#accordionFlushTeam">
+                        <div class="accordion-body">
+                            <xsl:apply-templates select="tei:list"/>
+                        </div>
+                    </div>
+                </div>
+            </xsl:for-each>
+        </div>
+    </xsl:template>     
 </xsl:stylesheet>

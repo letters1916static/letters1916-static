@@ -31,13 +31,13 @@ const columns = [
   {
     headerFilter: "input",
     title: "Place",
-    field: "Place",
+    field: "place",
     formatter: linkToDetailView,
     resizable: true,
   },
   {
     headerFilter: "input",
-    title: "Erwähnungen",
+    title: "Mentions",
     field: "mentions",
     formatter: "plaintext",
     resizable: true,

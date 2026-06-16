@@ -13,7 +13,11 @@
     </xsl:template>
     <xsl:template match="tei:pb">
         <span class="anchor-pb"></span>
-        <span class="pb" source="{@facs}"><xsl:value-of select="./@n"/></span>
+        <span class="pb d-none" source="{@facs}"><xsl:value-of select="./@n"/></span>
+        <xsl:if test="./@n != '1'">
+            <br/>
+        </xsl:if>
+        <span class="badge rounded-pill">page <xsl:value-of select="./@n"/></span><br/>
     </xsl:template>
     <xsl:template match="tei:unclear">
         <abbr title="unclear"><xsl:apply-templates/></abbr>
@@ -30,8 +34,18 @@
     <xsl:template match="tei:date">
         <span class="date"><xsl:apply-templates/></span>
     </xsl:template>
-    <xsl:template match="tei:lb">
+    <xsl:template match="tei:lb[not(preceding-sibling::*[1][self::tei:pb])]">
         <br/>
+    </xsl:template>
+    <xsl:template match="tei:seg[@type='del']">
+        <xsl:if test="normalize-space() != ''">
+            <span class="text-decoration-line-through"><xsl:apply-templates/></span>
+        </xsl:if>
+    </xsl:template>
+    <xsl:template match="tei:seg[@type='closer']">
+        <xsl:if test="normalize-space() != ''">
+            <br/><br/><xsl:apply-templates/><br/>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template match="tei:note">
@@ -71,31 +85,26 @@
     </xsl:template>
 
     <xsl:template match="tei:hi">
-        <span>
-            <xsl:choose>
-                <xsl:when test="@rendition = '#em'">
-                    <xsl:attribute name="class">
-                        <xsl:text>fst-italic</xsl:text>
-                    </xsl:attribute>
-                </xsl:when>
-                <xsl:when test="@rendition = '#italic'">
-                    <xsl:attribute name="class">
-                        <xsl:text>fst-italic</xsl:text>
-                    </xsl:attribute>
-                </xsl:when>
-                <xsl:when test="@rendition = '#smallcaps'">
-                    <xsl:attribute name="class">
-                        <xsl:text>smallcaps</xsl:text>
-                    </xsl:attribute>
-                </xsl:when>
-                <xsl:when test="@rendition = '#bold'">
-                    <xsl:attribute name="class">
-                        <xsl:text>fw-bold</xsl:text>
-                    </xsl:attribute>
-                </xsl:when>
-            </xsl:choose>
-            <xsl:apply-templates/>
-        </span>
+        <xsl:choose>
+            <xsl:when test="@rendition = '#em' or @rendition = '#italic'">
+                <span class="fst-italic"><xsl:apply-templates/></span>
+            </xsl:when>
+            <xsl:when test="@rendition = '#smallcaps'">
+                <span class="smallcaps"><xsl:apply-templates/></span>
+            </xsl:when>
+            <xsl:when test="@rendition = '#bold'">
+                <span class="fw-bold"><xsl:apply-templates/></span>
+            </xsl:when>
+            <xsl:when test="@rend = 'underline'">
+                <span class="text-decoration-underline"><xsl:apply-templates/></span>
+            </xsl:when>
+            <xsl:when test="@rend = 'superscript'">
+                <sup><xsl:apply-templates/></sup>
+            </xsl:when>
+            <xsl:otherwise>
+                <span><xsl:apply-templates/></span>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template match="tei:ref">

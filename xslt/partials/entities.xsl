@@ -205,11 +205,13 @@
                             </xsl:when>
                             -->
                             <xsl:when test="./@type = 'geonames'">
+                                <span class="badge rounded-pill me-2">geonames</span>
                                 <a href="https://sws.geonames.org/{./text()}" target="_blank">
                                     <xsl:value-of select="."/>
                                 </a>
                             </xsl:when>
                             <xsl:when test="./@type = 'wikidata'">
+                                <span class="badge rounded-pill me-2">wikidata</span>
                                 <a href="https://wikidata.org/wiki/{./text()}" target="_blank">
                                     <xsl:value-of select="."/>
                                 </a>

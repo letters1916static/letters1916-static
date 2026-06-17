@@ -42,14 +42,15 @@
 
     <xsl:template match="tei:ab">
         <div>
-            <nav class="d-flex justify-content-between align-items-center mb-4">
-                <div>
+            <nav class="align-items-center mb-4">
+                <div class="d-flex justify-content-between">
                     <button
                     id="backButton"
                     type="button"
                     class="btn btn-primary btn-sm me-2"
                     disabled=""
                     >
+                    <i class="bi bi-chevron-left"></i>
                     Previous page
                     </button>
                     <button
@@ -58,6 +59,7 @@
                     class="btn btn-primary btn-sm"
                     >
                     Next page
+                    <i class="bi bi-chevron-right"></i>
                     </button>
                 </div>
             </nav>

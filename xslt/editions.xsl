@@ -95,8 +95,9 @@
                                 </h1>
                                 <div>
                                     <a href="{$teiSource}">
-                                        <i class="bi bi-code-square fs-2" title="To Encoded Text" visually-hidden="true">
-                                            <span class="visually-hidden">To Encoded Text</span>
+                                        To Encoded Transcription Text<br/>
+                                        <i class="bi bi-download fs-2" title="To Encoded Text" visually-hidden="true">
+                                            <span class="visually-hidden">To Encoded Transcription Text</span>
                                         </i>
                                     </a>
                                 </div>
@@ -269,7 +270,7 @@
                 <script type="text/javascript">
                     var viewer = OpenSeadragon({
                         id: "osd_viewer",
-                        sequenceMode: false,
+                        sequenceMode: true,
                         showReferenceStrip: false,
                         tileSources: [
                             <xsl:for-each select=".//tei:graphic/@url">
@@ -281,6 +282,9 @@
                         ],
                         prefixUrl:"https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/images/",
                     });
+                    document.getElementById("osd_viewer").onload = function() {
+                        viewer.goToPage(0)
+                        };
                 </script>
                 <script src="js/editions.js"/>
             </body>

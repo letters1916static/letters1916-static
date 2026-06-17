@@ -1,4 +1,5 @@
-// LETTERS PAGE NAVIGATION
+// This file contains JavaScript code for handling
+// the OpenSeadragon viewer and page navigation in the letters edition.
 
 function osdNextPage() {
   viewer.goToNextPage();

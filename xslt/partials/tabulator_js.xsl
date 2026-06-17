@@ -28,7 +28,14 @@
             table.on("rowClick", function (e, row) {
                 var data = row.getData();
                 var url = `${data["link_to_doc"]}`;
-                window.open(url, "_self");
+                if (document.getElementById("person-modal")) {
+                    <!-- Call the modal function (js/person_modal.js) -->
+                    showPersonModal(data);
+                } else {
+                    <!-- If no person modal is available,
+                    open the URL in the same window (default behavior) -->
+                    window.open(url, "_self");
+                }
             });
 
             table.on("dataLoaded", function (data) {

@@ -65,6 +65,7 @@
                                     <th scope="col" tabulator-headerFilter="input">Firstname</th>
                                     <th scope="col" tabulator-headerFilter="input">Mentions</th>
                                     <th scope="col" tabulator-headerSort="false" tabulator-download="false" tabulator-visible="false">link_to_doc</th>
+                                    <th scope="col" tabulator-headerSort="false" tabulator-download="false" tabulator-visible="false">mentioned_in</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -101,6 +102,15 @@
                                         <td>
                                             <xsl:value-of select="concat($id, '.html')"/>
                                         </td>
+                                        <td>
+                                            <xsl:for-each select="./tei:noteGrp/tei:note[@type = 'mentions']">
+                                                <li>
+                                                    <a href="{replace(@target, '.xml', '.html')}">
+                                                        <xsl:value-of select="./text()"/>
+                                                    </a>
+                                                </li>
+                                            </xsl:for-each> 
+                                        </td>
                                     </tr>
                                 </xsl:for-each>
                             </tbody>
@@ -112,9 +122,24 @@
                             </xsl:call-template>
                         </div>
                     </div>
+                    <!-- Person modal START-->
+                    <div class="modal" tabindex="-1" id="person-modal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="person-modal-title"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" id="person-modal-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Person modal END-->
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <xsl:call-template name="tabulator_js"/>
+                <!-- Person modal script -->
+                <script src="js/person_modal.js"/>
             </body>
         </html>
 

@@ -37,6 +37,20 @@ const columns = [
   },
   {
     headerFilter: "input",
+    title: "Located in",
+    field: "locatedInPlace",
+    formatter: "plaintext",
+    resizable: true,
+  },
+  {
+    headerFilter: "input",
+    title: "Country",
+    field: "Country",
+    formatter: "plaintext",
+    resizable: true,
+  },
+  {
+    headerFilter: "input",
     title: "Mentions",
     field: "Mentions",
     formatter: "plaintext",
@@ -45,6 +59,20 @@ const columns = [
   /* the following fields are necessary, 
     provide a string val each in your html-table,
     (longitude and latitude)*/
+  {
+    title: "locatedInPlace",
+    field: "locatedInPlace",
+    formatter: "plaintext",
+    resizable: false,
+    visible: false,
+  },
+  {
+    title: "Country",
+    field: "Country",
+    formatter: "plaintext",
+    resizable: false,
+    visible: false,
+  },
   {
     title: "lat",
     field: "lat",
@@ -104,7 +132,7 @@ const tabulator_cfg = {
   responsiveLayout: "collapse",
   langs: langs,
   columns: columns,
-  initialSort: [{ column: "Place", dir: "asc" }],
+  initialSort: [{ column: "Country", dir: "asc" }],
 };
 
 /*this is just an extra capsule to pass cfg trough the functions*/

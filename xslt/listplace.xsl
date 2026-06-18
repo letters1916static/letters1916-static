@@ -67,6 +67,8 @@
                                     <th scope="col">lat</th>
                                     <th scope="col">lng</th>
                                     <th scope="col">linkToEntity</th>
+                                    <th scope="col">locatedInPlace</th>
+                                    <th scope="col">Country</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,6 +99,12 @@
                                         </td>
                                         <td>
                                             <xsl:value-of select="$id"/>
+                                        </td>
+                                            <td>
+                                            <xsl:value-of select="(.//tei:location[@type='located_in_place']/tei:placeName[1]/text())"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="./tei:country/text()"/>
                                         </td>
                                     </tr>
                                 </xsl:for-each>

@@ -4,7 +4,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:param name="directory_name">letters1916-static</xsl:param>
     <xsl:param name="project_title">Letters 1916</xsl:param>
-    <xsl:param name="redmine_id">18716</xsl:param>
+    <xsl:param name="redmine_id">28621</xsl:param>
     <xsl:param name="project_short_title">Letters 1916</xsl:param>
     <xsl:param name="default_lang">en</xsl:param>
     <xsl:param name="github_url">https://github.com/letters1916static/letters1916-static</xsl:param>

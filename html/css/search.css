@@ -45,3 +45,94 @@
   max-height: calc(100vh - 40px);
   overflow-y: auto;
 }
+
+a.ais-HierarchicalMenu-link {
+  display: inline-flex;
+}
+
+/* Search page Colors*/
+
+#refinements-section h3 {
+  color: var(--l1916-base-color-dark);
+}
+
+.ais-RefinementList-labelText,
+.ais-HierarchicalMenu-label,
+.ais-Panel-header,
+.ais-Stats-text,
+.ais-Snippet {
+  color: var(--l1916-base-color-dark);
+}
+
+.ais-CurrentRefinements .ais-CurrentRefinements-item {
+  background-color: var(--l1916-base-color-dark);
+}
+
+.ais-RefinementList-item .ais-RefinementList-count {
+  color: var(--l1916-base-color-light);
+  background-color: var(--l1916-base-color);
+}
+
+.ais-HierarchicalMenu-item .ais-HierarchicalMenu-count {
+  color: var(--l1916-base-color-light);
+  background-color: var(--l1916-base-color);
+}
+
+.ais-RefinementList .ais-RefinementList-showMore {
+  color: var(--l1916-base-color-light);
+  background-color: var(--l1916-base-color);
+}
+.ais-RefinementList .ais-RefinementList-showMore:hover {
+  background-color: var(--l1916-base-color-hover);
+}
+
+.ais-HierarchicalMenu .ais-HierarchicalMenu-showMore {
+  color: var(--l1916-base-color-light);
+  background-color: var(--l1916-base-color);
+}
+.ais-HierarchicalMenu .ais-HierarchicalMenu-showMore:hover {
+  background-color: var(--l1916-base-color-hover);
+}
+
+button.ais-ClearRefinements-button,
+button.ais-RangeInput-submit,
+.modal-footer .btn,
+.btn-group .btn {
+  background-color: var(--l1916-base-color);
+  border: var(--l1916-base-color-dark) 1px solid;
+  color: var(--l1916-base-color-light);
+}
+
+button.ais-ClearRefinements-button:hover,
+button.ais-RangeInput-submit:hover,
+.ais-Pagination-item--selected .ais-Pagination-link:hover,
+.modal-footer .btn:hover,
+.btn-group .btn:hover {
+  background-color: var(--l1916-base-color-hover);
+  border: var(--l1916-base-color-dark) 1px solid;
+  color: var(--l1916-base-color-light);
+}
+
+.ais-Hits-item {
+  background-color: var(--l1916-base-color-light);
+}
+.ais-Hits-item .badge {
+  color: var(--l1916-base-color);
+}
+
+.ais-Hits-item .badge:hover {
+  background-color: var(--l1916-base-color-light);
+  color: var(--l1916-base-color-dark);
+}
+
+.ais-Pagination-list .ais-Pagination-link {
+  color: var(--l1916-base-color-dark);
+}
+
+.ais-Pagination-list .ais-Pagination-link:hover {
+  color: var(--l1916-base-color-dark);
+}
+.ais-Pagination-list .ais-Pagination-item--selected .ais-Pagination-link {
+  background-color: var(--l1916-base-color-dark);
+  border-color: var(--l1916-base-color-dark);
+}

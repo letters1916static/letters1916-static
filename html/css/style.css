@@ -71,26 +71,3 @@ a:hover {
 button[role="tab"][aria-selected="false"] {
   color: var(--l1916-base-color-dark);
 }
-
-/* Search page */
-li.ais-CurrentRefinements-item {
-  background-color: var(--l1916-base-color-dark);
-}
-button.ais-RefinementList-showMore {
-  color: var(--l1916-base-color-light);
-  background-color: var(--l1916-base-color);
-}
-button.ais-RefinementList-showMore:hover {
-  background-color: var(--l1916-base-color-dark);
-}
-li.ais-Pagination-item--selected .ais-Pagination-link {
-  color: var(--l1916-base-color-light);
-  background-color: var(--l1916-base-color-dark);
-}
-button.ais-ClearRefinements-button {
-  color: var(--l1916-base-color-light);
-  background-color: var(--l1916-base-color);
-}
-button.ais-ClearRefinements-button:hover {
-  background-color: var(--l1916-base-dark);
-}

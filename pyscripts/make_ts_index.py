@@ -112,13 +112,32 @@ for x in tqdm(files, total=len(files)):
         )[0]
         record["person_entities"].append(item)
 
+    # record["place_entities"] = []
+    # for y in doc.any_xpath(".//tei:back//tei:listPlace/tei:place[@xml:id]"):
+    #     item = {}
+    #     item["id"] = get_xmlid(y)
+    #     item["label"] = make_entity_label(
+    #         y.xpath("./tei:placeName[1]", namespaces=namespaces)[0]
+    #     )[0]
+    #     record["place_entities"].append(item)
+        
     record["place_entities"] = []
     for y in doc.any_xpath(".//tei:back//tei:listPlace/tei:place[@xml:id]"):
         item = {}
         item["id"] = get_xmlid(y)
-        item["label"] = make_entity_label(
-            y.xpath("./tei:placeName[1]", namespaces=namespaces)[0]
-        )[0]
+        item["place_label"] = make_entity_label(
+             y.xpath("./tei:placeName[1]", namespaces=namespaces)[0]
+         )[0]
+        if len(y.xpath("./tei:country[1]/text()", namespaces=namespaces)) == 0:
+            country = UNK
+        else:
+            country = y.xpath("./tei:country[1]/text()", namespaces=namespaces)[0]
+        if len(y.xpath("./tei:location[@type='located_in_place']/tei:placeName[1]/text()", namespaces=namespaces)) == 0:
+            nearby_place = UNK
+        else:
+            nearby_place = y.xpath("./tei:location[@type='located_in_place']/tei:placeName[1]/text()", namespaces=namespaces)[0]
+        item["country_label"] = country
+        item["nearbyplace_label"] = f"{country} > {nearby_place}"
         record["place_entities"].append(item)
 
     record["keyword_entities"] = []

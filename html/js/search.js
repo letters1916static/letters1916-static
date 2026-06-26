@@ -25,7 +25,7 @@ const DEFAULT_CSS_CLASSES = {
   searchableInput: "form-control form-control-sm m-2 border-light-2",
   searchableSubmit: "d-none",
   searchableReset: "d-none",
-  showMore: "btn btn-secondary btn-sm align-content-center",
+  showMore: "btn btn-secondary btn-ais btn-sm align-content-center",
   list: "list-unstyled",
   count: "badge m-2 badge-secondary",
   label: "d-flex align-items-center text-capitalize",
@@ -74,7 +74,7 @@ search.addWidgets([
           ${hit.place_entities.map(
             (item) =>
               html`<a href="${item.id}.html" class="pe-2 custom-link"
-                ><i class="bi bi-geo-alt pe-1"></i>${item.label}</a
+                ><i class="bi bi-geo-alt pe-1"></i>${item.place_label}</a
               >`,
           )}
           <br />
@@ -177,7 +177,7 @@ search.addWidgets([
     cssClasses: DEFAULT_CSS_CLASSES,
   }),
 
-  instantsearch.widgets.panel({
+  /*   instantsearch.widgets.panel({
     collapsed: ({ state }) => {
       return state.query.length === 0;
     },
@@ -191,6 +191,27 @@ search.addWidgets([
     showMore: true,
     showMoreLimit: 50,
     limit: 10,
+    searchablePlaceholder: "Search for places",
+    cssClasses: DEFAULT_CSS_CLASSES,
+  }), */
+
+  instantsearch.widgets.panel({
+    collapsed: ({ state }) => {
+      return state.query.length === 0;
+    },
+    templates: {
+      header: "Places",
+    },
+  })(instantsearch.widgets.hierarchicalMenu)({
+    container: "#rf-places",
+    attributes: [
+      "place_entities.country_label",
+      "place_entities.nearbyplace_label",
+    ],
+    searchable: true,
+    showMore: true,
+    showMoreLimit: 50,
+    limit: 5,
     searchablePlaceholder: "Search for places",
     cssClasses: DEFAULT_CSS_CLASSES,
   }),
@@ -283,7 +304,7 @@ search.addWidgets([
       resetLabel: "Reset filters",
     },
     cssClasses: {
-      button: "btn",
+      button: "btn-ais",
     },
   }),
 

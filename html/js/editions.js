@@ -38,6 +38,10 @@ forwardButton.addEventListener("click", () => {
   osdNextPage();
 });
 
+viewer.addHandler("page", function (e) {
+  showPage(e.page);
+});
+
 if (pageSections.length > 0) {
   showPage(currentIndex);
 } else {

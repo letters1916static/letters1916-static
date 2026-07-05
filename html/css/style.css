@@ -93,6 +93,7 @@ button[role="tab"][aria-selected="false"] {
 .nav-link {
   color: var(--l1916-base-color);
 }
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus {
   color: var(--l1916-base-color-dark);
 }

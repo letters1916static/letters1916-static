@@ -41,32 +41,11 @@
     </xsl:template>
 
     <xsl:template match="tei:ab">
-        <div>
-            <nav class="align-items-center mb-4">
-                <div class="d-flex justify-content-between">
-                    <button
-                    id="backButton"
-                    type="button"
-                    class="btn btn-primary btn-sm me-2"
-                    disabled=""
-                    >
-                    <i class="bi bi-chevron-left"></i>
-                    Previous page
-                    </button>
-                    <button
-                    id="forwardButton"
-                    type="button"
-                    class="btn btn-primary btn-sm"
-                    >
-                    Next page
-                    <i class="bi bi-chevron-right"></i>
-                    </button>
-                </div>
-            </nav>
+        <div class="page-content">
             <xsl:for-each-group select="node()" group-starting-with="tei:pb">
                 <xsl:if test="self::tei:pb">
                     <xsl:variable select="./@n" name="page-id"/>
-                    <div id="page-{$page-id}" class="letter-page">
+                    <div letter-page="{$page-id}" class="letter-page">
                         <span class="anchor-pb"></span>
                         <span class="pb d-none" source="{@facs}"><xsl:value-of select="./@n"/></span>
                         <span class="badge rounded-pill">page <xsl:value-of select="./@n"/></span><br/>

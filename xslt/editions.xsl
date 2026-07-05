@@ -118,17 +118,51 @@
                         <div class="row pt-3">
                         <!-- Tabbed navigation (left)-->
                             <div class="col-md-5">
-                                <nav>
-                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                        <button class="nav-link active" id="nav-read-tab" data-bs-toggle="tab" data-bs-target="#nav-read" type="button" role="tab" aria-controls="nav-read" aria-selected="true">Transcription</button>
-                                        <button class="nav-link" id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about" type="button" role="tab" aria-controls="nav-about" aria-selected="false">About this letter</button>
-                                        <button class="nav-link" id="nav-meta-tab" data-bs-toggle="tab" data-bs-target="#nav-meta" type="button" role="tab" aria-controls="nav-meta" aria-selected="false">Meta</button>
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a
+                                        class="nav-link tab-link"
+                                        aria-current="page"
+                                        href="#transcription"
+                                        data-tab="1"
+                                        >Transcription</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link tab-link" href="#about" data-tab="2">About this letter</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link tab-link" href="#meta" data-tab="3">Meta</a>
+                                    </li>
+                                </ul>
+                                <!-- Nav pages -->
+                                <nav class="align-items-center mt-2 page-nav" id="nav-pages" >
+                                    <div class="d-flex justify-content-between">
+                                        <button
+                                        id="backButton"
+                                        type="button"
+                                        class="btn btn-primary btn-sm me-2"
+                                        disabled=""
+                                        >
+                                        <i class="bi bi-chevron-left"></i>
+                                        Previous page
+                                        </button>
+                                        <button
+                                        id="forwardButton"
+                                        type="button"
+                                        class="btn btn-primary btn-sm"
+                                        >
+                                        Next page
+                                        <i class="bi bi-chevron-right"></i>
+                                        </button>
                                     </div>
                                 </nav>
-                                <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade pt-3 show active" id="nav-read" role="tabpanel" aria-labelledby="nav-read-tab"><xsl:apply-templates select="//tei:body"/></div>
-                                    <div class="tab-pane fade pt-3" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab"><p><i><xsl:value-of select="$summary"/></i></p></div>
-                                    <div class="tab-pane fade pt-3" id="nav-meta" role="tabpanel" aria-labelledby="nav-meta-tab">
+                                <!-- Tab panes -->
+                                <div id="tab-panes" class="tab-content">
+                                    <div class="tab-pane pt-3 tab-panel" data-tab="1"><xsl:apply-templates select="//tei:body"/></div>
+                                    <div class="tab-pane pt-3 tab-panel" data-tab="2"><p><i><xsl:value-of select="$summary"/></i></p></div>
+                                    <div class="tab-pane pt-3 tab-panel" data-tab="3">
                                         <div class="card" style="width: 100%;">
                                             <ul class="list-group list-group-flush">
                                                 <!-- Sender Name-->

@@ -71,3 +71,28 @@ a:hover {
 button[role="tab"][aria-selected="false"] {
   color: var(--l1916-base-color-dark);
 }
+
+/* Editions page */
+.tab-panel,
+.letter-page {
+  display: none;
+}
+
+.tab-panel.active,
+.letter-page.active {
+  display: block;
+}
+
+.page-nav {
+  display: none;
+}
+.page-nav.active {
+  display: block;
+}
+
+.nav-link {
+  color: var(--l1916-base-color);
+}
+.nav-link:hover {
+  color: var(--l1916-base-color-dark);
+}

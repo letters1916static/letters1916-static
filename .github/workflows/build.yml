@@ -38,9 +38,9 @@ jobs:
       IMAGE_NAME: ${{ github.repository }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: set up uv (Python)
-        uses: astral-sh/setup-uv@v8.1.0  
+        uses: astral-sh/setup-uv@v8.3.1  
       - name: Fetch the data
         run: ./fetch_data.sh
       - name: Build the app
@@ -48,7 +48,7 @@ jobs:
       - name: Populate Typesense Index
         run: uv run pyscripts/make_ts_index.py
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:

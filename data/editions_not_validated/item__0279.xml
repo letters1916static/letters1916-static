@@ -41,14 +41,14 @@
         </langUsage>
         <correspDesc>
            <correspAction type="sent">
-              <persName key="#letters1916_person-0137">William George Lyon</persName>
+              <persName key="#letters1916_person-0469">William George Lyon</persName>
               <date>1916-03-10</date>
-              <placeName key="#letters1916_place-0009">87 Talbot Street, Dublin</placeName>
+              <placeName key="#letters1916_place-1275">87 Talbot Street, Dublin</placeName>
            </correspAction>
            <correspAction type="received">
-              <persName key="#letters1916_person-0032">J G Swift MacNeill</persName>
+              <persName key="#letters1916_person-1759">J G Swift MacNeill</persName>
               <date></date>
-              <placeName key="#letters1916_place-0011">17 Pembroke Road, Dublin</placeName>
+              <placeName key="#letters1916_place-0812">17 Pembroke Road, Dublin</placeName>
            </correspAction>
         </correspDesc>
         <textClass>

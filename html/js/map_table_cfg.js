@@ -15,7 +15,7 @@ const map_cfg = {
   on_row_click_zoom: 10,
   initial_coordinates: [47.0708, 15.4386],
   base_map_url:
-    "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+    "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_5eau_1_4764382fe31e5a5beebc9e46",
   /* some map providers need subdomains */
   subdomains: "abcd",
   attribution:

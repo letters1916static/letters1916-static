@@ -4,6 +4,7 @@
   --l1916-accent-color: #57905c;
   --l1916-base-color-light: #efefef;
   --l1916-base-color-dark: #776e63;
+  --l1916-base-color-darker: #322e2a;
   /*--bs-body-font-family: Open Sans, Helvetica, Arial, sans-serif;*/
 }
 
@@ -91,7 +92,7 @@ button[role="tab"][aria-selected="false"] {
 }
 
 .nav-link {
-  color: var(--l1916-base-color);
+  color: var(--l1916-base-color-darker);
 }
 .nav-link:hover,
 .nav-link:focus {
